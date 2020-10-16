@@ -27,3 +27,19 @@ body
 	text-align: 		justify;
 	text-justify:		inter-word;
 }
+
+.cat_further_reading
+{
+	padding-top: 		50px;
+	padding-bottom: 	70px;
+}
+
+.cat_footer
+{
+	width: 				100%;
+	background-color:	#00CED1;
+	clear:				both;
+	position: 			relative;
+	height: 			50px;
+	margin-top:			-50px;
+}
