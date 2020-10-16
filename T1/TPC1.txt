@@ -1,0 +1,9 @@
+Desenvolvimento de Aplicações WEB -- TPC1
+Paulo Barbosa (PG40160)
+
+TAREFA:
+	Construir uma página web sobre um dos seguintes temas:
+		-> Gatos
+		-> Glicínias
+		-> Geriatria
+		-> Galochas
