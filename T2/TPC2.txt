@@ -1,0 +1,21 @@
+Desenvolvimento de Aplicações WEB -- TPC2
+Paulo Barbosa (PG40160)
+
+TAREFA:
+	Específicar um DTD para o memórias descritivas (Project Record)
+	Escrever um XML de acordo com o DTD especificado
+
+DETALHES:
+	-> Poderá haver mais que 1 supervisor
+	
+	-> Para cada membro de Workteam (até 3) temos:
+		Nome, Número, ID (Número de Aluno), E-mail, Link Página Web (se disponível)
+
+	-> Texto contem itálicos, bolds, sublinhados e links (internos e externos)
+
+	-> Deliverables (uma lista com texto e link -- não esquecer url associado)
+	-> EM DELIVERABLES FAZER LINK PARA O DTD
+
+
+EXEMPLO DE PROJECT RECORD:
+	-> http://www4.di.uminho.pt/~jcr/PROJS/micei2002/guilherme/Project%20Record.htm

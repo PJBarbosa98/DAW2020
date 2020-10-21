@@ -10,3 +10,6 @@ Por: Paulo Barbosa (PG40160)
   <li>Postman</li>
   <li>MongoDb</li>
 </ul>
+
+### Arquivo de Fichas Práticas
+http://www4.di.uminho.pt/~jcr/AULAS/didac/RepFichas/site/index-fichas.html
