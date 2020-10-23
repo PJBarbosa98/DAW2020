@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	FILE: project_record.xml
+	
+	Project Record extended markup language (XML) file.
+	Validated with `project_record.dtd`.
+-->
+
+<!-- Link to stylesheet `style.css` -->
+<?xml-stylesheet href="style.css"?>
+<!-- Link to DTD `project_record.dtd` -->
+<!DOCTYPE project_record SYSTEM "project_record.dtd">
+
+<project_record>
+	<title>Project Record (Example)</title>
+
+	<header>
+		<key_name>
+			KEY NAME: PR_Key_Name_001
+		</key_name>
+
+		<pr_title>
+			TITLE: PR_Title_001
+		</pr_title>
+
+		<subtitle>
+			SUBTITLE: PR_Subtitle_001
+		</subtitle>
+		
+		<start_date>
+			START DATE: PR_Start_Date_001
+		</start_date>
+
+		<end_date>
+			End DATE: PR_End_Date_001
+		</end_date>
+
+		<supervisor>
+			SUPERVISOR: PR_Supervisor_001
+		</supervisor>
+	</header>
+
+	<workteam>
+		WORKTEAM
+	</workteam>
+
+	<abstract>
+		ABSTRACT
+	</abstract>
+
+	<deliverables>
+		DELIVERABLES
+	</deliverables>
+
+</project_record>
+

@@ -1,0 +1,39 @@
+/******************************************************************************
+ * FILE: style.css
+ *
+ * Provides styling for `project_record.xml`
+ ******************************************************************************/
+
+*
+{
+	font-family: 	sans-serif;
+}
+
+title
+{
+	display:		block;
+
+	font-size:		200%;
+	font-weight: 	600;
+
+	margin-bottom: 	40px;
+
+	text-align: 	center;
+}
+
+header
+{
+	display: 		block;
+
+	margin:			40px;
+	padding: 		20px;
+
+	border-style: 	solid;
+	border-radius: 	10px;
+}
+
+key_name, pr_title, subtitle, start_date, end_date, supervisor
+{
+	display: 		block;
+	text-align: 	center;
+}

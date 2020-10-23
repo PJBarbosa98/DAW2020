@@ -1,0 +1,22 @@
+<!ELEMENT	project_record		(title, header, workteam, abstract, deliverables)>
+
+<!ELEMENT	title				(#PCDATA)	>
+<!ELEMENT 	header				(key_name, pr_title, subtitle, start_date, end_date, supervisor)	>
+<!ELEMENT	workteam			(#PCDATA)	>
+<!ELEMENT 	abstract			(#PCDATA)	>
+<!ELEMENT	deliverables		(#PCDATA)	>
+
+<!ELEMENT key_name	(#PCDATA) >
+<!ELEMENT pr_title	(#PCDATA) >
+<!ELEMENT subtitle	(#PCDATA) >
+<!ELEMENT start_date	(#PCDATA) >
+<!ELEMENT end_date	(#PCDATA) >
+<!ELEMENT supervisor	(#PCDATA) >
+
+
+<!--
+	FILE: project_record.dtd
+	
+	Defines fundamental structure for respective XML file(s).
+	Can be used to validate XML files.
+-->
