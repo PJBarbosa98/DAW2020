@@ -17,33 +17,56 @@
 
 	<header>
 		<key_name>
-			KEY NAME: PR_Key_Name_001
+			<att_key>KEY NAME:</att_key>
+			<att_val>PR_Key_Name_001</att_val>
 		</key_name>
 
 		<pr_title>
-			TITLE: PR_Title_001
+			<att_key>TITLE:</att_key>
+			<att_val>PR_Title_001</att_val>
 		</pr_title>
 
 		<subtitle>
-			SUBTITLE: PR_Subtitle_001
+			<att_key>SUBTITLE:</att_key>
+			<att_val>PR_Subtitle_001</att_val>
 		</subtitle>
 		
 		<start_date>
-			START DATE: PR_Start_Date_001
+			<att_key>START DATE:</att_key>
+			<att_val>PR_Start_Date_001</att_val>
 		</start_date>
 
 		<end_date>
-			End DATE: PR_End_Date_001
+			<att_key>END DATE:</att_key>
+			<att_val>PR_End_Date_001</att_val>
 		</end_date>
 
 		<supervisor>
-			SUPERVISOR: PR_Supervisor_001
+			<att_key>SUPERVISOR(S):</att_key>
+			<att_val>PR_Supervisor_001</att_val>
+			<att_val>PR_Supervisor_002</att_val>
+			<att_val>PR_Supervisor_003</att_val>
 		</supervisor>
 	</header>
 
 	<workteam>
-		WORKTEAM
+		<sec_title>WORKTEAM</sec_title>
+		<member>
+			<mem_name>Paulo Barbosa</mem_name>
+			<mem_number>PG40160</mem_number>
+			<mem_id>40160</mem_id>
+			<mem_email>pg40160@alunos.uminho.pt</mem_email>
+			<mem_webpage>github.com/PJBarbosa98</mem_webpage>
+		</member>
+		<member>
+			<mem_name>Paulo Barbosa</mem_name>
+			<mem_number>PG40160</mem_number>
+			<mem_id>40160</mem_id>
+			<mem_email>pg40160@alunos.uminho.pt</mem_email>
+		</member>
+
 	</workteam>
+
 
 	<abstract>
 		ABSTRACT
@@ -55,3 +78,4 @@
 
 </project_record>
 
+<!-- xlink:href="https://www.w3schools.com" -->

@@ -1,18 +1,30 @@
 <!ELEMENT	project_record		(title, header, workteam, abstract, deliverables)>
 
 <!ELEMENT	title				(#PCDATA)	>
-<!ELEMENT 	header				(key_name, pr_title, subtitle, start_date, end_date, supervisor)	>
-<!ELEMENT	workteam			(#PCDATA)	>
+<!ELEMENT 	header				(key_name, pr_title, subtitle, start_date, end_date, supervisor) >
+<!ELEMENT	workteam			(sec_title, member, member?, member?) > <!-- 1st demandatory. 2nd & 3rd optional -->
 <!ELEMENT 	abstract			(#PCDATA)	>
 <!ELEMENT	deliverables		(#PCDATA)	>
 
-<!ELEMENT key_name	(#PCDATA) >
-<!ELEMENT pr_title	(#PCDATA) >
-<!ELEMENT subtitle	(#PCDATA) >
-<!ELEMENT start_date	(#PCDATA) >
-<!ELEMENT end_date	(#PCDATA) >
-<!ELEMENT supervisor	(#PCDATA) >
+<!ELEMENT	key_name			(att_key, att_val) >
+<!ELEMENT	pr_title			(att_key, att_val) >
+<!ELEMENT	subtitle			(att_key, att_val) >
+<!ELEMENT	start_date			(att_key, att_val) >
+<!ELEMENT	end_date			(att_key, att_val) >
+<!ELEMENT	supervisor			(att_key, att_val+) >
 
+<!ELEMENT	att_key				(#PCDATA) >
+<!ELEMENT 	att_val				(#PCDATA) >
+
+<!ELEMENT	sec_title			(#PCDATA) >
+<!ELEMENT	member				(mem_name, mem_number, mem_id, mem_email, mem_webpage?) >
+
+<!ELEMENT	mem_name			(#PCDATA) >
+<!ELEMENT	mem_number			(#PCDATA) >
+<!ELEMENT	mem_id				(#PCDATA) >
+<!ELEMENT	mem_email			(#PCDATA) >
+
+<!ELEMENT	mem_webpage			(#PCDATA) >
 
 <!--
 	FILE: project_record.dtd
@@ -20,3 +32,4 @@
 	Defines fundamental structure for respective XML file(s).
 	Can be used to validate XML files.
 -->
+
