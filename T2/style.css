@@ -79,3 +79,32 @@ mem_webpage
 {
 	display: 		block;
 }
+
+abs_content
+{
+	display: 		block;
+	margin-left:	60px;
+	margin-right: 	60px;
+}
+
+abs_paragraph
+{
+	display: 		block;
+	margin-bottom: 	20px;
+	text-align: 	justify;
+}
+
+bold
+{
+	font-weight: 	600;
+}
+
+underline
+{
+	text-decoration: underline;
+}
+
+italic
+{
+	font-style: 	italic;
+}

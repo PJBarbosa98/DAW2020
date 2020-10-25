@@ -3,7 +3,7 @@
 <!ELEMENT	title				(#PCDATA)	>
 <!ELEMENT 	header				(key_name, pr_title, subtitle, start_date, end_date, supervisor) >
 <!ELEMENT	workteam			(sec_title, member, member?, member?) > <!-- 1st demandatory. 2nd & 3rd optional -->
-<!ELEMENT 	abstract			(#PCDATA)	>
+<!ELEMENT 	abstract			(sec_title, abs_content)	>
 <!ELEMENT	deliverables		(#PCDATA)	>
 
 <!ELEMENT	key_name			(att_key, att_val) >
@@ -25,6 +25,14 @@
 <!ELEMENT	mem_email			(#PCDATA) >
 
 <!ELEMENT	mem_webpage			(#PCDATA) >
+
+<!ELEMENT	abs_content			(abs_paragraph)+ >
+<!ELEMENT	abs_paragraph		(#PCDATA | bold | underline | italic)* >
+
+<!ELEMENT 	bold				(#PCDATA) >
+<!ELEMENT 	underline			(#PCDATA) >
+<!ELEMENT 	italic				(#PCDATA) >
+
 
 <!--
 	FILE: project_record.dtd
