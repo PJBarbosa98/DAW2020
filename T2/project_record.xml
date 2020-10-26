@@ -53,17 +53,17 @@
 	<workteam>
 		<sec_title>WORKTEAM</sec_title>
 		<member>
-			<mem_name>Paulo Barbosa</mem_name>
-			<mem_number>PG40160</mem_number>
-			<mem_id>40160</mem_id>
-			<mem_email>pg40160@alunos.uminho.pt</mem_email>
-			<mem_webpage>github.com/PJBarbosa98</mem_webpage>
+			<mem_name>Member Name 1</mem_name>
+			<mem_number>Member Number 1</mem_number>
+			<mem_id>Member ID 1</mem_id>
+			<mem_email>Member Email 1</mem_email>
+			<mem_webpage>Member WebPage 1</mem_webpage>
 		</member>
 		<member>
-			<mem_name>Paulo Barbosa</mem_name>
-			<mem_number>PG40160</mem_number>
-			<mem_id>40160</mem_id>
-			<mem_email>pg40160@alunos.uminho.pt</mem_email>
+			<mem_name>Member Name 2</mem_name>
+			<mem_number>Member Number 2</mem_number>
+			<mem_id>Member ID 2</mem_id>
+			<mem_email>Member Email 2</mem_email>
 		</member>
 
 	</workteam>
@@ -98,7 +98,7 @@
 				<url_name>URL TITLE 1</url_name>
 				<url_hyperlink>URL_LINK_1</url_hyperlink>				
 			</del_url>
-			
+
 			<del_url>
 				<url_name>URL TITLE 2</url_name>
 				<url_hyperlink>URL_LINK_2</url_hyperlink>				

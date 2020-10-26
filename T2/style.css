@@ -104,7 +104,7 @@ underline
 	text-decoration: underline;
 }
 
-italic, url_hyperlink
+italic, mem_webpage, url_hyperlink
 {
 	font-style: 	italic;
 }
