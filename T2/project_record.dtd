@@ -4,7 +4,7 @@
 <!ELEMENT 	header				(key_name, pr_title, subtitle, start_date, end_date, supervisor) >
 <!ELEMENT	workteam			(sec_title, member, member?, member?) > <!-- 1st demandatory. 2nd & 3rd optional -->
 <!ELEMENT 	abstract			(sec_title, abs_content)	>
-<!ELEMENT	deliverables		(#PCDATA)	>
+<!ELEMENT	deliverables		(sec_title, del_urls)	>
 
 <!ELEMENT	key_name			(att_key, att_val) >
 <!ELEMENT	pr_title			(att_key, att_val) >
@@ -33,6 +33,11 @@
 <!ELEMENT 	underline			(#PCDATA) >
 <!ELEMENT 	italic				(#PCDATA) >
 
+<!ELEMENT	del_urls			(del_url)+ >
+<!ELEMENT	del_url 			(url_name, url_hyperlink) >
+
+<!ELEMENT	url_name			(#PCDATA) >
+<!ELEMENT 	url_hyperlink		(#PCDATA) >
 
 <!--
 	FILE: project_record.dtd

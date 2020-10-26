@@ -9,6 +9,7 @@
 
 <!-- Link to stylesheet `style.css` -->
 <?xml-stylesheet href="style.css"?>
+
 <!-- Link to DTD `project_record.dtd` -->
 <!DOCTYPE project_record SYSTEM "project_record.dtd">
 
@@ -90,9 +91,20 @@
 
 
 	<deliverables>
-		DELIVERABLES
+		<sec_title>DELIVERABLES</sec_title>
+
+		<del_urls>
+			<del_url>
+				<url_name>URL TITLE 1</url_name>
+				<url_hyperlink>URL_LINK_1</url_hyperlink>				
+			</del_url>
+			
+			<del_url>
+				<url_name>URL TITLE 2</url_name>
+				<url_hyperlink>URL_LINK_2</url_hyperlink>				
+			</del_url>
+		</del_urls>
+
 	</deliverables>
 
 </project_record>
-
-<!-- xlink:href="https://www.w3schools.com" -->
