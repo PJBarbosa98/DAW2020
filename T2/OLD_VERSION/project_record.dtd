@@ -1,0 +1,48 @@
+<!ELEMENT	project_record		(title, header, workteam, abstract, deliverables)>
+
+<!ELEMENT	title				(#PCDATA)	>
+<!ELEMENT 	header				(key_name, pr_title, subtitle, start_date, end_date, supervisor) >
+<!ELEMENT	workteam			(sec_title, member, member?, member?) > <!-- 1st demandatory. 2nd & 3rd optional -->
+<!ELEMENT 	abstract			(sec_title, abs_content)	>
+<!ELEMENT	deliverables		(sec_title, del_urls)	>
+
+<!ELEMENT	key_name			(att_key, att_val) >
+<!ELEMENT	pr_title			(att_key, att_val) >
+<!ELEMENT	subtitle			(att_key, att_val) >
+<!ELEMENT	start_date			(att_key, att_val) >
+<!ELEMENT	end_date			(att_key, att_val) >
+<!ELEMENT	supervisor			(att_key, att_val+) >
+
+<!ELEMENT	att_key				(#PCDATA) >
+<!ELEMENT 	att_val				(#PCDATA) >
+
+<!ELEMENT	sec_title			(#PCDATA) >
+<!ELEMENT	member				(mem_name, mem_number, mem_id, mem_email, mem_webpage?) >
+
+<!ELEMENT	mem_name			(#PCDATA) >
+<!ELEMENT	mem_number			(#PCDATA) >
+<!ELEMENT	mem_id				(#PCDATA) >
+<!ELEMENT	mem_email			(#PCDATA) >
+
+<!ELEMENT	mem_webpage			(#PCDATA) >
+
+<!ELEMENT	abs_content			(abs_paragraph)+ >
+<!ELEMENT	abs_paragraph		(#PCDATA | bold | underline | italic)* >
+
+<!ELEMENT 	bold				(#PCDATA) >
+<!ELEMENT 	underline			(#PCDATA) >
+<!ELEMENT 	italic				(#PCDATA) >
+
+<!ELEMENT	del_urls			(del_url)+ >
+<!ELEMENT	del_url 			(url_name, url_hyperlink) >
+
+<!ELEMENT	url_name			(#PCDATA) >
+<!ELEMENT 	url_hyperlink		(#PCDATA) >
+
+<!--
+	FILE: project_record.dtd
+	
+	Defines fundamental structure for respective XML file(s).
+	Can be used to validate XML files.
+-->
+

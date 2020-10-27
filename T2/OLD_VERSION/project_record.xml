@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	FILE: project_record.xml
+	
+	Project Record extended markup language (XML) file.
+	Validated with `project_record.dtd`.
+-->
+
+<!-- Link to stylesheet `style.css` -->
+<?xml-stylesheet href="style.css"?>
+
+<!-- Link to DTD `project_record.dtd` -->
+<!DOCTYPE project_record SYSTEM "project_record.dtd">
+
+<project_record>
+	<title>Project Record (Example)</title>
+
+	<header>
+		<key_name>
+			<att_key>KEY NAME:</att_key>
+			<att_val>PR_Key_Name_001</att_val>
+		</key_name>
+
+		<pr_title>
+			<att_key>TITLE:</att_key>
+			<att_val>PR_Title_001</att_val>
+		</pr_title>
+
+		<subtitle>
+			<att_key>SUBTITLE:</att_key>
+			<att_val>PR_Subtitle_001</att_val>
+		</subtitle>
+		
+		<start_date>
+			<att_key>START DATE:</att_key>
+			<att_val>PR_Start_Date_001</att_val>
+		</start_date>
+
+		<end_date>
+			<att_key>END DATE:</att_key>
+			<att_val>PR_End_Date_001</att_val>
+		</end_date>
+
+		<supervisor>
+			<att_key>SUPERVISOR(S):</att_key>
+			<att_val>PR_Supervisor_001</att_val>
+			<att_val>PR_Supervisor_002</att_val>
+			<att_val>PR_Supervisor_003</att_val>
+		</supervisor>
+	</header>
+
+	<workteam>
+		<sec_title>WORKTEAM</sec_title>
+		<member>
+			<mem_name>Member Name 1</mem_name>
+			<mem_number>Member Number 1</mem_number>
+			<mem_id>Member ID 1</mem_id>
+			<mem_email>Member Email 1</mem_email>
+			<mem_webpage>Member WebPage 1</mem_webpage>
+		</member>
+		<member>
+			<mem_name>Member Name 2</mem_name>
+			<mem_number>Member Number 2</mem_number>
+			<mem_id>Member ID 2</mem_id>
+			<mem_email>Member Email 2</mem_email>
+		</member>
+
+	</workteam>
+
+
+	<abstract>
+		<sec_title>ABSTRACT</sec_title>
+		<abs_content>
+			<abs_paragraph>Lorem ipsum dolor sit amet, <bold>consectetur adipisicing elit</bold>, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco <underline>laboris</underline> nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla <italic>pariatur. Excepteur sint</italic> occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</abs_paragraph>
+
+			<abs_paragraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</abs_paragraph>
+		</abs_content>
+	</abstract>
+
+
+
+	<deliverables>
+		<sec_title>DELIVERABLES</sec_title>
+
+		<del_urls>
+			<del_url>
+				<url_name>URL TITLE 1</url_name>
+				<url_hyperlink>URL_LINK_1</url_hyperlink>				
+			</del_url>
+
+			<del_url>
+				<url_name>URL TITLE 2</url_name>
+				<url_hyperlink>URL_LINK_2</url_hyperlink>				
+			</del_url>
+		</del_urls>
+
+	</deliverables>
+
+</project_record>
