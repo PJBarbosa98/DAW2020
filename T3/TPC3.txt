@@ -1,0 +1,9 @@
+Desenvolvimento de Aplicações WEB -- TPC2
+Paulo Barbosa (PG40160)
+
+TAREFA:
+	Criar um DTD e uma stylesheet XSLT que gere um website para o dataset dos
+	arqueossítios do NW português.
+
+	-> 	Ver exemplo em Exerícios da Aula / Aula 03 
+		(ficheiros `arq-site.xsl` e `arq-son-EVO.xml`)
