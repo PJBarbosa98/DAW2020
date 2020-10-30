@@ -20,7 +20,7 @@
 <!ELEMENT key_name		(#PCDATA)>
 <!ELEMENT pr_title		(#PCDATA)>
 <!ELEMENT subtitle		(#PCDATA)>
-<!ELEMENT start_date	(#PCDATA)>
+<!ELEMENT start_date	  (#PCDATA)>
 <!ELEMENT end_date		(#PCDATA)>
 
 <!ELEMENT supervisors	(supervisor+)>
@@ -35,16 +35,16 @@
 >
 
 <!ELEMENT mem_name		(#PCDATA)>
-<!ELEMENT mem_number	(#PCDATA)>
-<!ELEMENT mem_email		(#PCDATA)>
-<!ELEMENT mem_webpage	(#PCDATA)>
+<!ELEMENT mem_number	  (#PCDATA)>
+<!ELEMENT mem_email	   (#PCDATA)>
+<!ELEMENT mem_webpage	 (#PCDATA)>
 
 <!ATTLIST member
 	id 		ID 		#REQUIRED
 >
 
 <!ATTLIST mem_webpage
-	url 	CDATA	#REQUIRED
+	url 	CDATA	     #REQUIRED
 >
 
 <!ELEMENT abstract
@@ -57,7 +57,7 @@
 
 <!ELEMENT bold 			(#PCDATA)>
 <!ELEMENT underline		(#PCDATA)>
-<!ELEMENT italic		(#PCDATA)>
+<!ELEMENT italic		   (#PCDATA)>
 
 
 <!ELEMENT deliverables
@@ -69,5 +69,5 @@
 >
 
 <!ATTLIST deliverable
-	url 	CDATA	#REQUIRED
+	url 	CDATA	       #REQUIRED
 >

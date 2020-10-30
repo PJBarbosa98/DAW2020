@@ -64,9 +64,7 @@
             <b>Duração:</b>
             <xsl:value-of select="duracao"/>
         </p>
-        <address>
-            [<a href="#i{generate-id()}">Voltar ao índice</a>]
-        </address>
+        <address> [<a href="#i{generate-id()}">Voltar ao índice</a>] </address>
         <center>
             <hr/>
         </center>

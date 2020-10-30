@@ -1,15 +1,15 @@
-<!ELEMENT agenda 	(entrada|grupo)+ >
-<!ELEMENT entrada 	(nome, email, telefone?) >
-<!ELEMENT nome 		(#PCDATA) >
-<!ELEMENT email 	(#PCDATA) >
-<!ELEMENT telefone 	(#PCDATA) >
+<!ELEMENT agenda 	      (entrada|grupo)+ >
+<!ELEMENT entrada 	     (nome, email, telefone?) >
+<!ELEMENT nome 		    (#PCDATA) >
+<!ELEMENT email 	       (#PCDATA) >
+<!ELEMENT telefone 	    (#PCDATA) >
 
 <!ATTLIST entrada
-	id 		ID 		#REQUIRED
-	tipo	CDATA	#IMPLIED
+	id        ID 		  #REQUIRED
+	tipo	  CDATA	    #IMPLIED
 >
 
-<!ELEMENT grupo (entrada|grupo|ref)+ >
+<!ELEMENT grupo            (entrada|grupo|ref)+ >
 
 <!ATTLIST grupo
 	gid		ID 		#REQUIRED
@@ -18,5 +18,5 @@
 <!ELEMENT ref		#EMPTY >
 
 <!ATTLIST ref
-	apontado IDREF	#REQUIRED
+	apontado   IDREF	#REQUIRED
 >
