@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT   ARQSITS            (ARQELEM+) >
+<!ELEMENT   ARQELEM            (TIPO,
+                                IDENTI,
+                                IMAGEM?,
+                                DESCRI,
+                                CRONO?,
+                                LUGAR,
+                                FREGUE,
+                                CONCEL,
+                                CODADM*,
+                                LATITU?,
+                                LONGIT?,
+                                ALTITU?,
+                                ACESSO?,
+                                QUADRO?,
+                                TRAARQ?,
+                                DESARQ,
+                                INTERP?,
+                                INTERE?,
+                                DEPOSI?,
+                                BIBLIO*,
+                                AUTOR,
+                                DATA)>
+
+<!-- Element `TIPO` -->
+<!ELEMENT   TIPO                (#PCDATA) >
+<!ATTLIST   TIPO
+            ASSUNTO    CDATA    #REQUIRED >
+
+<!-- Element `IDENTI` -->
+<!ELEMENT   IDENTI              (#PCDATA) >
+
+<!-- Element `IMAGEM` (shows up only once) -->
+<!ELEMENT   IMAGEM              (#PCDATA) >
+<!ATTLIST   IMAGEM
+            NOME       CDATA    #REQUIRED >
+
+<!-- Element `DESCRI` -->
+<!ELEMENT   DESCRI              (#PCDATA | LIGA)* >
+
+<!-- Element `LIGA` -->
+<!ELEMENT   LIGA                (#PCDATA) >
+<!ATTLIST   LIGA
+            TERMO       CDATA   #REQUIRED >
+
+<!-- Element `CRONO` -->
+<!ELEMENT   CRONO               (#PCDATA) >
+
+<!-- Element `LUGAR` -->
+<!ELEMENT   LUGAR               (#PCDATA | LIGA)* >
+
+<!-- Element `FREGUE` -->
+<!ELEMENT   FREGUE              (#PCDATA | LIGA)* >
+
+<!-- Element `CONCEL` -->
+<!ELEMENT   CONCEL              (#PCDATA) >
+
+<!-- Element `CODADM` -->
+<!ELEMENT   CODADM              (#PCDATA) >
+
+<!-- Element `LATITU` -->
+<!ELEMENT   LATITU              (#PCDATA) >
+
+<!-- Element `LONGIT` -->
+<!ELEMENT   LONGIT              (#PCDATA) >
+
+<!-- Element `ALTITU` -->
+<!ELEMENT   ALTITU              (#PCDATA) >
+
+<!-- Element `ACESSO` -->
+<!ELEMENT   ACESSO              (#PCDATA | LIGA)* >
+
+<!-- Element `QUADRO` -->
+<!ELEMENT   QUADRO              (#PCDATA | LIGA)* >
+
+<!-- Element `TRAARQ` -->
+<!ELEMENT   TRAARQ              (#PCDATA | LIGA)* >
+
+<!-- Element `DESARQ` -->
+<!ELEMENT   DESARQ              (#PCDATA | LIGA)* >
+
+<!-- Element `INTERP` -->
+<!ELEMENT   INTERP              (#PCDATA | LIGA)* >
+
+<!-- Element `INTERE` -->
+<!ELEMENT   INTERE              (#PCDATA | LIGA)* >
+
+<!-- Element `DEPOSI` -->
+<!ELEMENT   DEPOSI              (#PCDATA) >
+
+<!-- Element `BIBLIO` -->
+<!ELEMENT   BIBLIO              (#PCDATA | LIGA)* >
+
+<!-- Element `AUTOR` -->
+<!ELEMENT   AUTOR               (#PCDATA) >
+
+<!-- Element `DATA` -->
+<!ELEMENT   DATA                (#PCDATA) >
