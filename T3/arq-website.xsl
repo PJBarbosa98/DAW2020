@@ -17,14 +17,13 @@
                             display: block;
                             text-align: center;
                         }
-                        .my-index{
+                        .my-index {
                             display: block;
                             text-align: center;
                             margin-top: 40px;
                             border-style: solid;
                             border-radius: 1px;
-                        }
-                    </style>
+                        }</style>
                 </head>
                 <body>
                     <h2> Arqueossítios do NW português </h2>
@@ -37,7 +36,7 @@
                             </xsl:apply-templates>
                         </ol>
                     </div>
-                    
+
 
                 </body>
             </html>
@@ -70,6 +69,28 @@
                     <title>
                         <xsl:value-of select="IDENTI"/>
                     </title>
+                    <style type="text/css">
+                        body {
+                            margin: 40px;
+                            font-family: 'Roboto', sans-serif;
+                        }
+                        
+                        h1 {
+                            display: block;
+                            text-align: center;
+                            margin-bottom: 40px;
+                        }
+                        
+                        p {
+                            display: block;
+                            text-align: justify;
+                            text-justify: inter-word;
+                        }
+                        
+                        address {
+                            margin-top: 40px;
+                        }
+                    </style>
                 </head>
                 <body>
                     <h1>
