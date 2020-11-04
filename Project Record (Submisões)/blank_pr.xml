@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/Users/paulobarbosa/Desktop/DAW2020/pr.dtd">
+<pr>
+    <meta>
+        <key></key>
+        <title></title>
+        <bdate></bdate>
+        <edate></edate>
+        <supervisor></supervisor>
+    </meta>
+    <team>
+        <member id="">
+            <name></name>
+            <email></email>
+        </member>
+    </team>
+    <abstract>
+        <p></p>
+    </abstract>
+    <deliverables>
+        <link url=""></link>
+    </deliverables>
+</pr>

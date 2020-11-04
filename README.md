@@ -11,5 +11,9 @@ Por: Paulo Barbosa (PG40160)
   <li>MongoDb</li>
 </ul>
 
+### Submissão de Trabalho de Casa + Projeto
+Será necessário construir um Project Record (ficheiro XML) com informação relativa ao que foi pedido/feito. 
+Ver pasta `Project Record (Submisões)`.
+
 ### Arquivo de Fichas Práticas
 http://www4.di.uminho.pt/~jcr/AULAS/didac/RepFichas/site/index-fichas.html
