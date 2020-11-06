@@ -51,7 +51,7 @@
     <!-- Template for index.html -->
     <xsl:template match="//ARQELEM" mode="index">
         <li>
-            <a href="localhost:7777/arqs/{@id}">
+            <a href="http://localhost:7777/arqs/{@id}">
                 <xsl:value-of select="IDENTI"/>
             </a>
         </li>
@@ -230,7 +230,7 @@
                         </p>
                     </div>
 
-                    <address> [<a href="index.html"> Página Principal </a>] </address>
+                    <address> [<a href="http://localhost:7777/arqs/"> Página Principal </a>] </address>
                 </body>
             </html>
         </xsl:result-document>
