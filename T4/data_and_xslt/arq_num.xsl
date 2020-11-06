@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
+    <xsl:output method="html" indent="yes" encoding="UTF-8"/>
+
     <xsl:template match="/">
 
         <!-- Operations for index.html -->
-        <xsl:result-document href="src/index.html">
+        <xsl:result-document href="../site/index.html">
             <html>
                 <head>
                     <title>Arqueossítios do NW português</title>
@@ -23,7 +25,8 @@
                             margin-top: 40px;
                             border-style: solid;
                             border-radius: 10px;
-                        }</style>
+                        }
+                    </style>
                 </head>
                 <body>
                     <h2> Arqueossítios do NW português </h2>
@@ -31,41 +34,36 @@
                     <div class="my-index">
                         <h3>Índice dos Registos</h3>
                         <ol>
-                            <xsl:apply-templates select="//ARQELEM" mode="indice">
-                                <xsl:sort select="IDENTI"/>
-                            </xsl:apply-templates>
+                            <xsl:apply-templates select="//ARQELEM" mode="index"/>
                         </ol>
                     </div>
                 </body>
             </html>
         </xsl:result-document>
 
-        <!-- Operations for each register's webpage -->
+        <!-- Operations for individual registers -->
         <xsl:apply-templates/>
 
     </xsl:template>
 
+    <!-- Defined Templates Here -->
 
-    <!-- DEFINED TEMPLATES HERE ................................................. -->
-
-    <!-- Template for `indice` mode -->
-    <xsl:template match="//ARQELEM" mode="indice">
+    <!-- Template for index.html -->
+    <xsl:template match="//ARQELEM" mode="index">
         <li>
-            <a name="i{generate-id()}"/>
-            <a href="{generate-id()}.html">
+            <a href="localhost:7777/arqs/{@id}">
                 <xsl:value-of select="IDENTI"/>
             </a>
         </li>
     </xsl:template>
 
     <!-- Template for individual registers -->
-    <xsl:template match="//ARQELEM">
-
-        <xsl:result-document href="src/{generate-id()}.html">
+    <xsl:template match="ARQELEM">
+        <xsl:result-document href="../site/arq{@id}.html">
             <html>
                 <head>
                     <title>
-                        <xsl:value-of select="IDENTI"/>
+                        <xsl:value-of select="@id"/> - <xsl:value-of select="IDENTI"/>
                     </title>
                     <style type="text/css">
                         body {
@@ -232,11 +230,10 @@
                         </p>
                     </div>
 
-                    <address> [<a href="index.html#i{generate-id()}">Página Principal</a>]</address>
+                    <address> [<a href="index.html"> Página Principal </a>] </address>
                 </body>
             </html>
         </xsl:result-document>
-
     </xsl:template>
 
 </xsl:stylesheet>
