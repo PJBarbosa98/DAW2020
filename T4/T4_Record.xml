@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/Users/paulobarbosa/Desktop/DAW2020/Project%20Record%20(Submis%C3%B5es)/pr.dtd">
+
+<!--
+    Project Record for TPC4 
+-->
+
+<pr>
+    <meta>
+        <key>DAW_2020_PG40160_TPC4</key>
+        <title>TPC 4 (Desenvolvimento de Aplicações WEB)</title>
+        <bdate> 4 de novembro de 2020</bdate>
+        <edate>10 de novembro de 2020</edate>
+        <supervisor>José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <member id="pg40160">
+            <name>Paulo Jorge da Silva Barbosa</name>
+            <email>pjbarbosa98@gmail.com</email>
+        </member>
+    </team>
+    <abstract>
+        <p>
+            Inicialmente, foi criado o script <b>`add_xml_id`</b> de modo a adicionar 
+            o atributo <i>`id`</i>, de um modo incremental, a cada elemento 
+            <b>ARQELEM</b> do dataset original (arq.xml). Assim, o <i>n-ésimo</i>
+            registo neste teria <i>id = n</i>.
+            Com isto, obteve-se o ficheiro <b>`arq_with_id.xml`</b>.
+        </p>
+        <p>
+            De seguida, com <b>`arq_num.xsl`</b>, foram geradas várias páginas HTML 
+            -- uma para cada registo ARQELEM -- com stylesheets (recorrendo a CSS).
+            Adicionalmente, este processo foi também aplicado a uma página 
+            <b>`index.html`</b> que serviria como índice dos registos contidos
+            no <i>dataset</i>.
+        </p>
+        <p>
+            Com as páginas WEB geradas, prosseguiu-se à criação de um servidor
+            simples que responde a pedidos do seguinte formato: <b>localhost:7777/arqs</b>
+            ou <b>localhost:7777/arqs</b> para apresentar o índice e
+            <b>localhost:7777/arqs/n</b> para apresentar o <i>n-ésimo</i> registo
+            do <i>dataset</i>.
+        </p>
+        <p>
+            Em último lugar, o ficheiro <b>`arq_num.xsl`</b> foi modificado de modo a
+            que as <i>hiperligações</i> provenientes do índice (ficheiro
+            <b>`index.html`</b>) para os registos indivíduais fossem do tipo que
+            o servidor mencionado anteriormente conseguisse responder.
+        </p>
+    </abstract>
+    <deliverables>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T4/data_and_xslt/add_xml_id.py">
+            Script para adicionar ID
+        </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T4/data_and_xslt/arq_with_id.xml">
+            Dataset modificado
+        </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T4/data_and_xslt/arq_num.xsl">
+            Ficheiro XSL
+        </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/tree/main/T4/site">
+            Páginas WEB
+        </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T4/server/arq_server.js">
+            Módulo Principal do Servidor
+        </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T4/server/arq_aux.js">
+            Módulo Auxiliar do Servidor
+        </link>
+    </deliverables>
+</pr>

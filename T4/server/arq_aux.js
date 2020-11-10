@@ -2,7 +2,7 @@
  *
  * DAW2020 - T4 - `arq_aux.js`
  *
- * Main Server Module (for requests)
+ * Auxiliar Server Module 
  *
  */
 
