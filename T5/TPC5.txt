@@ -1,0 +1,13 @@
+TPC:
+
+	- ter o json-server com o dataset da escola de música:
+		alunos, cursos e instrumentos
+
+	- criar um segundo serviço (http server)
+
+		http://localhost:4000/
+			==> index.html (lista com as 3 coleções) [ índice de índices ]
+
+
+
+	- criar um segundo serviço (http server) que responde em HTML
