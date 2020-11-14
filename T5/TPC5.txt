@@ -1,13 +1,12 @@
-TPC:
+Desenvolvimento de Aplicações WEB -- TPC5
+Paulo Barbosa (PG40160)
 
-	- ter o json-server com o dataset da escola de música:
+TAREFA:
+	- Ter o json-server com o dataset da escola de música:
 		alunos, cursos e instrumentos
 
-	- criar um segundo serviço (http server)
+	- Criar um segundo serviço (http server)
 
 		http://localhost:4000/
 			==> index.html (lista com as 3 coleções) [ índice de índices ]
 
-
-
-	- criar um segundo serviço (http server) que responde em HTML
