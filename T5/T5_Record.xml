@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/Users/paulobarbosa/Desktop/DAW2020/Project%20Record%20(Submis%C3%B5es)/pr.dtd">
+
+<!--
+    Project Record for TPC4 
+-->
+
+<pr>
+    <meta>
+        <key>DAW_2020_PG40160_TPC5</key>
+        <title>TPC 5 (Desenvolvimento de Aplicações WEB)</title>
+        <bdate>11 de novembro de 2020</bdate>
+        <edate>18 de novembro de 2020</edate>
+        <supervisor>José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <member id="pg40160">
+            <name>Paulo Jorge da Silva Barbosa</name>
+            <email>pjbarbosa98@gmail.com</email>
+        </member>
+    </team>
+    <abstract>
+        <p>
+            Inicialmente, recorreu-se à ferramenta <i>json-server</i> que criou um serviço 
+            WEB com o <i>dataset</i> da escola de música na porta 3001.
+        </p>
+        <p>
+            De seguida, foi criado outro serviço na porta 4000 que recebe apenas pedidos 
+            <b>GET</b> que são, por sua vez, efetuados ao serviço mencionado anteriormente.
+            Na diretoria principal (endereço <b>localhost:4000/</b>) é apresentado uma 
+            lista das coleções do <i>dataset</i> original.
+
+        </p>
+        <p>
+            A partir desta diretoria é possível ver os dados relativos a cada 
+            coleção (através da apresentação de um índice) e, para cada um 
+            destes, por hiperligações, são apresentados os registos indivíduais 
+            presentes em cada coleção.
+        </p>
+    </abstract>
+    <deliverables>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T5/dataset/db.json">
+            Dataset da Escola de Música
+        </link>
+    </deliverables>
+</pr>
+
