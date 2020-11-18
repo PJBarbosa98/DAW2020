@@ -9,6 +9,10 @@ task model is composed by:
 	what
 	type
 
+also
+	edit task (PUT request)
+	delete task (DELETE request)
+
 possible extras:
 	maintain lists of task types, task descriptions, ..., that are
 	preloaded into select components
