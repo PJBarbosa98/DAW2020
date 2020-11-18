@@ -1,0 +1,22 @@
+{
+  "alunos": [
+    {
+      "nome": "Fernando Pessoa",
+      "id": "PG12345",
+      "curso": "Literatura",
+      "git": "http://github.com/"
+    },
+    {
+      "nome": "Clara Ribeiro",
+      "id": "A87654",
+      "curso": "Música",
+      "git": ""
+    },
+    {
+      "nome": "Rui Espinheiro",
+      "id": "A65777",
+      "curso": "Culinária",
+      "git": ""
+    }
+  ]
+}

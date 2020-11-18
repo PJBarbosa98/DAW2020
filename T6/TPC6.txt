@@ -1,0 +1,16 @@
+create a single page application for a toDo list
+
+main page should have 3 areas: insert from, toDo task list and resolved task list;
+
+task model is composed by: 
+	dateCreated
+	dateDued (dealine)
+	who
+	what
+	type
+
+possible extras:
+	maintain lists of task types, task descriptions, ..., that are
+	preloaded into select components
+
+	make a nice interfice, even responsive
