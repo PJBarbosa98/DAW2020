@@ -1,20 +1,27 @@
-create a single page application for a toDo list
+Desenvolvimento de Aplicações WEB -- TPC6
+Paulo Barbosa (PG40160)
 
-main page should have 3 areas: insert from, toDo task list and resolved task list;
+TAREFA:
+	Create a single page application for a `to do` list
+	
+	Main page should have three areas:
+		=> Insert;
+		=> View `to do` task list;
+		=> Resolved task list;
 
-task model is composed by: 
-	dateCreated
-	dateDued (dealine)
-	who
-	what
-	type
+	Task Model is composed by:
+		=> dateCreated
+		=> dateDued 	(deadline)
+		=> who
+		=> what
+		=> type 		(if there are several types of tasks)
 
-also
-	edit task (PUT request)
-	delete task (DELETE request)
+	Additionally (bonus points), add functionality
+		=> edit task (PUT request)
+		=> delete task (DELETE request)
 
-possible extras:
-	maintain lists of task types, task descriptions, ..., that are
-	preloaded into select components
+	Possible Extras:
+		=> Maintain lists of task types, task descriptions, ...,
+			that are pre-loaded into select components
 
-	make a nice interfice, even responsive
+		=> Make a nice interface, even responsive

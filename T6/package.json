@@ -1,0 +1,22 @@
+{
+  "name": "tpc6_daw2020",
+  "version": "1.0.0",
+  "description": "TPC6 da UC Desenvolvimento de Aplicações WEB (`to do` list)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "devstart": "nodemon server.js"
+  },
+  "keywords": [
+    "json-server",
+    "javascript",
+    "nodejs"
+  ],
+  "author": "Paulo Barbosa",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "nodemon": "^2.0.6"
+  }
+}

@@ -183,6 +183,48 @@ function geraFormAluno( d ){
     `
 }
 
+// Formulatio para alteração ----------------------------
+function geraForm2Aluno( a, d ){
+    return `
+    <html>
+        <head>
+            <title>Alteração do aluno: ${a.id}</title>
+            <meta charset="utf-8"/>
+            <link rel="icon" href="favicon.png"/>
+            <link rel="stylesheet" href="../w3.css"/>
+        </head>
+        <body>
+        
+        </body>
+            <div class="w3-container w3-teal">
+                <title>Alteração do aluno: ${a.id}</title>
+            </div>
+
+            <form class="w3-container" action="/alunos" method="POST">
+                <label class="w3-text-teal"><b>Nome</b></label>
+                <input class="w3-input w3-border w3-light-grey" type="text" name="nome" value="${a.nome}">
+          
+                <label class="w3-text-teal"><b>Número / Identificador</b></label>
+                <input class="w3-input w3-border w3-light-grey" type="text" name="id" value="${a.id}">
+
+                <label class="w3-text-teal"><b>Curso</b></label>
+                <input class="w3-input w3-border w3-light-grey" type="text" name="curso" value="${a.curso}">
+
+                <label class="w3-text-teal"><b>Link para o repositório no Git</b></label>
+                <input class="w3-input w3-border w3-light-grey" type="text" name="git" value="${a.git}">
+          
+                <input class="w3-btn w3-blue-grey" type="submit" value="Registar"/>
+                <input class="w3-btn w3-blue-grey" type="reset" value="Limpar valores"/> 
+            </form>
+
+            <footer class="w3-container w3-teal">
+                <address>Gerado por galuno::PRI2020 em ${d}</address>
+            </footer>
+        </body>
+    </html>
+    `
+}
+
 // Criação do servidor
 
 var galunoServer = http.createServer(function (req, res) {
@@ -242,16 +284,39 @@ var galunoServer = http.createServer(function (req, res) {
                 res.write(geraFormAluno(d))
                 res.end()
             }
+            // GET /alunos/:id/edit --------------------------------------------------------------------
+            else if(/\/alunos\/(A|PG)[0-9]+\/edit/.test(req.url)){
+                var idAluno = req.url.split("/")[2]
+
+                axios.get("http://localhost:3000/alunos" + idAluno)
+                .then( response => {
+                    let a = response.data
+                    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                    res.write(geraForm2Aluno(a, d))
+                    res.end()
+                })
+                .catch(erro => {
+                        res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+                        res.write('<p>Erro na obt. do aluno: ' + erro + '</p>')
+                        res.end()
+                })
+                .catch(function(erro)) {
+                    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                    res.write('<p>Não foi possivel obter informação do aluno...</p>å')
+                    res.end()
+
+                }
+            }
             // GET /w3.css ------------------------------------------------------------------------
-            //else if(/\/w3\.css$/.test(req.url)){
-            //    fs.readFile("w3.css", function(erro, dados){
-            //        if(!erro){
-            //            res.writeHead(200, {'Content-Type': 'text/css;charset=utf-8'})
-            //            res.write(dados)
-            //            res.end()
-            //        }
-            //    })
-            //}
+            else if(/\/w3\.css$/.test(req.url)){
+                fs.readFile("w3.css", function(erro, dados){
+                    if(!erro){
+                        res.writeHead(200, {'Content-Type': 'text/css;charset=utf-8'})
+                        res.write(dados)
+                        res.end()
+                    }
+                })
+            }
             else{
                 res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
                 res.write("<p>" + req.method + " " + req.url + " não suportado neste serviço.</p>")
