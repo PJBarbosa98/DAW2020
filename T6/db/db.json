@@ -1,6 +1,5 @@
 {
-  "tasks": 
-  [
+  "tasks": [
     {
       "id": "t1",
       "dateCreated": "20/11/2020",
@@ -15,9 +14,45 @@
       "dateCreated": "20/11/2020",
       "dateDued": "21/11/2020",
       "who": "Paulo Barbosa",
-      "what": "Task 1",
+      "what": "Task 2",
       "type": "Task Type 1",
       "status": "Completed"
+    },
+    {
+      "id": "t512",
+      "dateCreated": "20/11/2020",
+      "dateDued": "21/11/2020",
+      "who": "Paulo Barbosa",
+      "what": "Task 1",
+      "type": "Task Type 1",
+      "status": "Ongoing"
+    },
+    {
+      "id": "t51",
+      "dateCreated": "20/11/2020",
+      "dateDued": "21/11/2020",
+      "who": "Paulo Barbosa",
+      "what": "Task 1",
+      "type": "Task Type 1",
+      "status": "Ongoing"
+    },
+    {
+      "id": "t59",
+      "dateCreated": "20/11/2020",
+      "dateDued": "21/11/2020",
+      "who": "Paulo Barbosa",
+      "what": "Task 1",
+      "type": "Task Type 1",
+      "status": "Ongoing"
+    },
+    {
+      "id": "t58",
+      "dateCreated": "20/11/2020",
+      "dateDued": "21/11/2020",
+      "who": "Paulo Barbosa",
+      "what": "Task 1",
+      "type": "Task Type 1",
+      "status": "Ongoing"
     }
   ]
 }
