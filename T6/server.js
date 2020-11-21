@@ -117,6 +117,17 @@ var todo_server = http.createServer(function (req, res) {
 				});
 			}
 
+			// GET tasks/new
+			// Create new Task
+			if (/\/tasks\/new$/.test(req.url))
+			{
+				res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+				res.write(templates.generate_register_form());
+				res.end();
+			}
+
+
+
 			// GET tasks/edit/{id}
 			// Edit task with id `id`
 			if (/\/tasks\/edit\/(t)[0-9]+$/.test(req.url))
@@ -132,6 +143,7 @@ var todo_server = http.createServer(function (req, res) {
 
 					var task = response.data;
 
+					console.log('edit: ' + task);
 					res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
 					res.write(templates.edit_task_form(task));
 					res.end();
@@ -143,47 +155,49 @@ var todo_server = http.createServer(function (req, res) {
 				});
 			}
 
+
 			break;
 
 		case "POST":
-			
 			recoverInfo(req, result => {
-				//console.log('TASK Post: ' +  JSON.stringify(result));
-				// axios.put??
+
+				console.log('POST request with body: ' + JSON.stringify(result));
 				axios.post('http://localhost:3001/tasks', result)
 				.then(resp => {
-					res.writeHead(200, {'Content-Type': 'text/html;charset=ut-8'});
-					res.write(templates.generate_post_confirm());
+					res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+					res.write(templates.generate_new_task_confirmed(resp.data));
 					res.end();
 				})
-				.catch(erro => {
-					res.writeHead(200, {'Content-Type': 'text/html;charset=ut-8'});
-					res.write('<p>POST request failed!</p>');
+				.catch(error => {
+					res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+					res.write('<p>Got an error while creating a new task!</p>');
 					res.end();
-				})
+				});
+			
 			})
 
-			res.end();
-			break;
+			break;			
+
 /*
- 		res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
-            // Replace this code with a POST request to the API server
-            recuperaInfo(req, resultado => {
-                console.log('POST de aluno:' + JSON.stringify(resultado))
-                axios.post('http://localhost:3000/alunos', resultado)
-                    .then(resp => {
-                        res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
-                        res.write(geraPostConfirm( resp.data, d))
-                        res.end()
-                    })
-                    .catch(erro => {
-                        res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
-                        res.write('<p>Erro no POST: ' + erro + '</p>')
-                        res.write('<p><a href="/">Voltar</a></p>')
-                        res.end()
-                    })
-            })
+res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+// Replace this code with a POST request to the API server
+recuperaInfo(req, resultado => {
+    console.log('POST de aluno:' + JSON.stringify(resultado))
+    axios.post('http://localhost:3000/alunos', resultado)
+        .then(resp => {
+            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+            res.write(geraPostConfirm( resp.data, d))
+            res.end()
+        })
+        .catch(erro => {
+            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+            res.write('<p>Erro no POST: ' + erro + '</p>')
+            res.write('<p><a href="/">Voltar</a></p>')
+            res.end()
+        })
+})
 */
+
 
 		case "PUT":
 			res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});

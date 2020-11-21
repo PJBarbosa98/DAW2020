@@ -1,57 +1,39 @@
 {
   "tasks": [
     {
-      "id": "t1",
-      "dateCreated": "20/11/2020",
-      "dateDued": "21/11/2020",
+      "id": "t3",
+      "dateCreated": "21/11/2020",
+      "dateDued": "24/11/2020",
       "who": "Paulo Barbosa",
-      "what": "Task 1",
-      "type": "Task Type 1",
+      "what": "Enable Task Edition",
+      "type": "DAW2020",
       "status": "Ongoing"
     },
     {
-      "id": "t2",
+      "id": "t4",
       "dateCreated": "20/11/2020",
-      "dateDued": "21/11/2020",
+      "dateDued": "24/11/2020",
       "who": "Paulo Barbosa",
-      "what": "Task 2",
-      "type": "Task Type 1",
+      "what": "Create Main Page",
+      "type": "DAW2020",
       "status": "Completed"
     },
     {
-      "id": "t512",
-      "dateCreated": "20/11/2020",
-      "dateDued": "21/11/2020",
+      "id": "t1",
+      "dateCreated": "19/11/2020",
+      "dateDued": "24/11/2020",
       "who": "Paulo Barbosa",
-      "what": "Task 1",
-      "type": "Task Type 1",
-      "status": "Ongoing"
+      "what": "Create Welcome Page",
+      "type": "DAW2020",
+      "status": "Completed"
     },
     {
-      "id": "t51",
-      "dateCreated": "20/11/2020",
-      "dateDued": "21/11/2020",
+      "id": "t2",
+      "dateCreated": "19/11/2020",
+      "dateDued": "24/11/2020",
       "who": "Paulo Barbosa",
-      "what": "Task 1",
-      "type": "Task Type 1",
-      "status": "Ongoing"
-    },
-    {
-      "id": "t59",
-      "dateCreated": "20/11/2020",
-      "dateDued": "21/11/2020",
-      "who": "Paulo Barbosa",
-      "what": "Task 1",
-      "type": "Task Type 1",
-      "status": "Ongoing"
-    },
-    {
-      "id": "t58",
-      "dateCreated": "20/11/2020",
-      "dateDued": "21/11/2020",
-      "who": "Paulo Barbosa",
-      "what": "Task 1",
-      "type": "Task Type 1",
+      "what": "Add DELETE functionality",
+      "type": "DAW2020",
       "status": "Ongoing"
     }
   ]

@@ -95,7 +95,7 @@ function generate_tasks_page ( tasks, d )
               class="w3-lime w3-panel w3-border w3-round-large"
               style="width: 25% !important; margin: auto;"
             >
-              <p>New Task</p>
+              <p><a href="/tasks/new">New Task</a></p>
             </div>
 
           </div>
@@ -216,7 +216,138 @@ function generate_individual_task_page ( task )
 
 exports.generate_individual_task_page = generate_individual_task_page;
 
+/* generate_register_form : template for new task */
+function generate_register_form ()
+{
+  return `
+    <html>
+
+      <head>
+          <title>New Task</title>
+          <meta charset="utf-8"/>
+          <link rel="icon" href="favicon.ico"/>
+          <link rel="stylesheet" href="w3.css"/>
+      </head>
+
+      <body>
+
+        <div class="w3-container w3-lime">
+          <h2 class="w3-center">New Task</h2>
+        </div>
+
+        <br/><br/>
+        <div class="w3-container w3-center">
+          <form class="w3-container" action="/tasks" method="POST">
+            <label class="w3-text-indigo"><b>ID</b></label>
+            <input style="width:50%; margin: auto; margin-top: 1%;"
+            class="w3-input w3-border w3-light-grey w3-center" type="text"
+            name="id">
+
+            <br/>
+            <label class="w3-text-indigo"><b>Date Created</b></label>
+            <input style="width:50%; margin: auto; margin-top: 1%;"
+            class="w3-input w3-border w3-light-grey w3-center" type="text"
+            name="dateCreated">
+
+            <br/>
+            <label class="w3-text-indigo"><b>Date Dued</b></label>
+            <input style="width:50%; margin: auto; margin-top: 1%;"
+            class="w3-input w3-border w3-light-grey w3-center" type="text"
+            name="dateDued">
+
+            <br/>
+            <label class="w3-text-indigo"><b>Who has to do it</b></label>
+            <input style="width:50%; margin: auto; margin-top: 1%;"
+            class="w3-input w3-border w3-light-grey w3-center" type="text"
+            name="who">
+
+            <br/>
+            <label class="w3-text-indigo"><b>What is it</b></label>
+            <input style="width:50%; margin: auto; margin-top: 1%;"
+            class="w3-input w3-border w3-light-grey w3-center" type="text"
+            name="what">
+
+            <br/>
+            <label class="w3-text-indigo"><b>Task Type</b></label>
+            <input style="width:50%; margin: auto; margin-top: 1%;"
+            class="w3-input w3-border w3-light-grey w3-center" type="text"
+            name="type">
+
+            <br/>
+            <label class="w3-text-indigo"><b>Status (either "Ongoing" or "Completed")
+            </b></label>
+            <input style="width:50%; margin: auto; margin-top: 1%;"
+            class="w3-input w3-border w3-light-grey w3-center" type="text"
+            name="status">
+
+            <br/>
+            <input class="w3-btn w3-blue-grey" type="submit" value="Add"/>
+            <input class="w3-btn w3-blue-grey" type="reset" value="Reset"/> 
+
+          </form>
+        </div>
+
+      </body>
+
+    </html>
+  `
+}
+
+exports.generate_register_form = generate_register_form;
+
+/* generate_new_task_confirmed : template for page to be displayed
+ * when a new task was successfuly created */
+function generate_new_task_confirmed (task)
+{
+  return `
+    <html>
+      <head>
+          <title>Task Added - ${task.id}</title>
+          <meta charset="utf-8"/>
+          <link rel="icon" href="favicon.ico"/>
+          <link rel="stylesheet" href="w3.css"/>
+      </head>
+      <body>
+        <div class="w3-card-4">
+          
+          <header class="w3-container w3-lime">
+            <h1>Task inserted!</h1>
+          </header>
+
+          <div class="w3-container w3-center" style="margin-top:5%;">
+              <p><a href="/tasks/${task.id}">Access your page</a></p>
+          </div>
+
+          <div
+            class="w3-indigo w3-panel w3-border w3-round-large"
+            style="width: 25% !important; margin: auto; margin-top: 5%"
+          >
+            <p class="w3-center"><a href="/tasks">Go Back</a></p>
+          </div>
+
+        </div>
+      </body>
+    </html>
+  `;
+}
+
+
+
+exports.generate_new_task_confirmed = generate_new_task_confirmed;
+
 /* edit_task_form : template for task alteration page */
+function edit_task_form ( task )
+{
+  let html_page = `
+    <p>CONSTRUCTING EDIT PAGE...</p>
+  `;
+  return html_page;
+}
+
+exports.edit_task_form = edit_task_form;
+
+
+/*
 function edit_task_form ( task )
 {
   let html_page = `
@@ -294,7 +425,9 @@ function edit_task_form ( task )
 
 exports.edit_task_form = edit_task_form;
 
-/* generate_post_confirm: POST confirmation HTML page template */
+*/
+/* generate_post_confirm: POST confirmation HTML page template 
+
 function generate_post_confirm ()
 {
   return `
@@ -326,7 +459,7 @@ function generate_post_confirm ()
 }
 
 exports.generate_post_confirm = generate_post_confirm;
-
+*/
 /*
       "id": "t1",
       "dateCreated": "20/11/2020",
