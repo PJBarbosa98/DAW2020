@@ -80,7 +80,7 @@ function generate_tasks_page ( tasks, d )
           <td>${t.id}</td>
           <td><a href="tasks/${t.id}">${t.what}</a></td>
           <td><a href="/tasks/edit/${t.id}">EDIT</a></td>
-          <td>DELETE</td>
+          <td><a href="/tasks/delete/${t.id}">DELETE</a></td>
         </tr>
       `;
     }
@@ -119,7 +119,7 @@ function generate_tasks_page ( tasks, d )
           <td>${t.id}</td>
           <td><a href="/tasks/${t.id}">${t.what}</a></td>
           <td><a href="/tasks/edit/${t.id}">EDIT</a></td>
-          <td>DELETE</td>
+          <td><a href="/tasks/delete/${t.id}">DELETE</a></td>
         </tr>
       `;
     }
@@ -331,9 +331,41 @@ function generate_new_task_confirmed (task)
   `;
 }
 
-
-
 exports.generate_new_task_confirmed = generate_new_task_confirmed;
+
+/* generate_delete_page : template for task deletion page */
+function generate_delete_page ( )
+{
+  return `
+    <html>
+
+      <head>
+        <title>Task Deleted</title>
+        <meta charset="utf-8"/>
+        <link rel="icon" href="favicon.ico"/>
+        <link rel="stylesheet" href="w3.css"/>
+      </head>
+
+      <body>
+        <div class="w3-container w3-center w3-lime">
+          <h2>Task successfuly deleted!</h2>
+        </div>
+
+          <div
+            class="w3-indigo w3-panel w3-border w3-round-large"
+            style="width: 25% !important; margin: auto; margin-top: 5%"
+          >
+            <p class="w3-center"><a href="/tasks">Go Back</a></p>
+          </div>
+
+      </body>
+
+    </html>
+  `;
+}
+
+exports.generate_delete_page = generate_delete_page;
+
 
 /* edit_task_form : template for task alteration page */
 function edit_task_form ( task )

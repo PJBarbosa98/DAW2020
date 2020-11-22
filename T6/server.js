@@ -6,6 +6,9 @@ var templates 	= require('./templates');
 var static 		= require('./static');
 var {parse} 	= require('querystring');
 
+// put requests with html
+// https://stackoverflow.com/questions/8054165/using-put-method-in-html-form
+
 /********************************************************************
  *
  * SET UP:
@@ -64,7 +67,7 @@ var todo_server = http.createServer(function (req, res) {
 
 
 			// GET /
-			if (req.url == '/')
+			else if (req.url == '/')
 			{
 				res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 				res.write(templates.welcome_page());
@@ -94,7 +97,7 @@ var todo_server = http.createServer(function (req, res) {
 			// GET tasks/{id}
 			// Fetch individual task page given its `id` value
 			// `id` must be of shape `t{number}`
-			if (/\/tasks\/(t)[0-9]+$/.test(req.url))
+			else if (/\/tasks\/(t)[0-9]+$/.test(req.url))
 			{
 				// Request URL split by ('/')
 				let parts 	= req.url.split('/');
@@ -119,18 +122,34 @@ var todo_server = http.createServer(function (req, res) {
 
 			// GET tasks/new
 			// Create new Task
-			if (/\/tasks\/new$/.test(req.url))
+			else if (/\/tasks\/new$/.test(req.url))
 			{
 				res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
 				res.write(templates.generate_register_form());
 				res.end();
 			}
 
+			// GET tasks/delete/{id}
+			// Delete task with id `id`
+			else if (/\/tasks\/delete\/(t)[0-9]+$/.test(req.url))
+			{
+				res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+				res.write(templates.generate_delete_page());
+
+				// Task deletion request
+
+				let parts 	= req.url.split('/');
+				let t_id 	= parts[parts.length - 1];
+
+				axios.delete('http://localhost:3001/tasks/' + t_id);
+				
+				res.end();
+			}
 
 
 			// GET tasks/edit/{id}
 			// Edit task with id `id`
-			if (/\/tasks\/edit\/(t)[0-9]+$/.test(req.url))
+			else if (/\/tasks\/edit\/(t)[0-9]+$/.test(req.url))
 			{
 
 				// Request URL split by ('/')
@@ -200,13 +219,6 @@ recuperaInfo(req, resultado => {
 
 
 		case "PUT":
-			res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-			res.write('<h2>Under Construction...</h2>');
-			res.write('<p>The page you requested has not been built yet!</p>');
-			res.end();
-			break;
-
-		case "DELETE":
 			res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 			res.write('<h2>Under Construction...</h2>');
 			res.write('<p>The page you requested has not been built yet!</p>');

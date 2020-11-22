@@ -35,6 +35,24 @@
       "what": "Add DELETE functionality",
       "type": "DAW2020",
       "status": "Ongoing"
+    },
+    {
+      "id": "t5",
+      "dateCreated": "22/11/2020",
+      "dateDued": "24/11/2020",
+      "who": "Paulo Barbosa",
+      "what": "Make it look pretty",
+      "type": "DAW2020",
+      "status": "Ongoing"
+    },
+    {
+      "id": "t6",
+      "dateCreated": "19/11/2020",
+      "dateDued": "24/11/2020",
+      "who": "Paulo Barbosa",
+      "what": "Basic interface",
+      "type": "DAW2020",
+      "status": "Completed"
     }
   ]
 }
