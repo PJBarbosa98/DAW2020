@@ -174,6 +174,54 @@ var todo_server = http.createServer(function (req, res) {
 				});
 			}
 
+			// GET /tasks/clear
+			// Remove completed tasks from the database
+			else if (/\/tasks\/clear$/.test(req.url))
+			{
+
+				// TO DO:
+				// fetch all tasks (axios.get ?)
+				// filter those with 'status' == 'Completed'
+				// delete them (axios.delete)
+
+				// Fetch all tasks
+				axios.get('http://localhost:3001/tasks')
+				.then(response => {
+
+					var tasks = response.data;
+
+					tasks.forEach(t => {
+
+						// Filter those with 'status' == 'Completed'
+						if (t.status == 'Completed')
+						{
+							// Delete them
+							axios.delete('http://localhost:3001/tasks/' + t.id);
+						}
+					});
+
+					res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+					res.write(templates.generate_clear_page());
+					res.end();
+
+				})
+				.catch(error => {
+					res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+					res.write("<p>Failed to get tasks for deletion!</p>");
+					res.end();
+				})
+
+
+			}
+
+			// Invalid GET request
+			else
+			{
+				res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+				res.write('<p>Invalid GET Request!</p>');
+				res.end();	
+			}
+
 
 			break;
 
@@ -181,48 +229,64 @@ var todo_server = http.createServer(function (req, res) {
 			recoverInfo(req, result => {
 
 				console.log('POST request with body: ' + JSON.stringify(result));
-				axios.post('http://localhost:3001/tasks', result)
-				.then(resp => {
-					res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
-					res.write(templates.generate_new_task_confirmed(resp.data));
-					res.end();
-				})
-				.catch(error => {
-					res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-					res.write('<p>Got an error while creating a new task!</p>');
-					res.end();
-				});
-			
+
+				// Unwrap PUT request
+
+				let is_put = JSON.stringify(result).split(':');
+				// Fetch "_method" (if possible)
+				is_put = is_put[0].substring(1).trim();
+
+				// PUT REQUEST
+				if (is_put.normalize() == '"_method"'.normalize())
+				{
+					
+					// --- PUT requests' body -----------------------
+
+					// Remove '{"_method":"PUT",' from PUT request
+					let put_req = JSON.stringify(result).substring(17);
+					// Add '{' at the beginning of the PUT request
+					put_req 	= '{' + put_req;
+
+					// --- Record to be altered ---------------------
+
+					let put_url = JSON.stringify(result).split(',')[1].substring(6);
+					
+					put_url 	= put_url.substring(0, put_url.length-1);
+					put_url	 	= 'http://localhost:3001/tasks/' + put_url;
+
+					// --- PUT request itself -----------------------
+
+					axios.put(put_url, JSON.parse(put_req))
+					.then(resp => {
+						res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+						res.write(templates.generate_edit_confirmed());
+						res.end();
+					})
+					.catch(error => {
+						res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+						res.write('<p>Got an error while editig a task!</p>');
+						res.end();	
+					})
+
+				}
+
+				// NOT A PUT REQUEST
+				else
+				{
+					axios.post('http://localhost:3001/tasks', result)
+					.then(resp => {
+						res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+						res.write(templates.generate_new_task_confirmed(resp.data));
+						res.end();
+					})
+					.catch(error => {
+						res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+						res.write('<p>Got an error while creating a new task!</p>');
+						res.end();
+					});
+				}			
 			})
 
-			break;			
-
-/*
-res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
-// Replace this code with a POST request to the API server
-recuperaInfo(req, resultado => {
-    console.log('POST de aluno:' + JSON.stringify(resultado))
-    axios.post('http://localhost:3000/alunos', resultado)
-        .then(resp => {
-            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
-            res.write(geraPostConfirm( resp.data, d))
-            res.end()
-        })
-        .catch(erro => {
-            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
-            res.write('<p>Erro no POST: ' + erro + '</p>')
-            res.write('<p><a href="/">Voltar</a></p>')
-            res.end()
-        })
-})
-*/
-
-
-		case "PUT":
-			res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-			res.write('<h2>Under Construction...</h2>');
-			res.write('<p>The page you requested has not been built yet!</p>');
-			res.end();
 			break;
 
 		// Invalid request

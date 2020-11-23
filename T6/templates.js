@@ -126,7 +126,6 @@ function generate_tasks_page ( tasks, d )
 
   });
 
-
   html_page += `
             </table>
 
@@ -135,7 +134,7 @@ function generate_tasks_page ( tasks, d )
               class="w3-lime w3-panel w3-border w3-round-large"
               style="width: 25% !important; margin: auto;"
             >
-              <p>Clear Completed</p>
+              <p><a href="/tasks/clear">Clear Completed</a></p>
             </div>
 
           </div>
@@ -371,19 +370,7 @@ exports.generate_delete_page = generate_delete_page;
 function edit_task_form ( task )
 {
   let html_page = `
-    <p>CONSTRUCTING EDIT PAGE...</p>
-  `;
-  return html_page;
-}
-
-exports.edit_task_form = edit_task_form;
-
-
-/*
-function edit_task_form ( task )
-{
-  let html_page = `
-    <html>
+     <html>
 
       <head>
           <title>Task Edit - ${task.id}</title>
@@ -399,8 +386,11 @@ function edit_task_form ( task )
         </div>
 
         <br/><br/>
+
         <div class="w3-container w3-center">
           <form class="w3-container" action="/tasks" method="POST">
+            <input type="hidden" name="_method" value="PUT"/>
+
             <label class="w3-text-indigo"><b>ID</b></label>
             <input style="width:50%; margin: auto; margin-top: 1%;"
             class="w3-input w3-border w3-light-grey w3-center" type="text"
@@ -436,20 +426,20 @@ function edit_task_form ( task )
             class="w3-input w3-border w3-light-grey w3-center" type="text"
             name="type" value="${task.type}">
 
-            <br/>
+
+
             <label class="w3-text-indigo"><b>Status</b></label>
             <input style="width:50%; margin: auto; margin-top: 1%;"
             class="w3-input w3-border w3-light-grey w3-center" type="text"
             name="status" value="${task.status}">
 
-            <br/>
             <input class="w3-btn w3-blue-grey" type="submit" value="Update"/>
           </form>
         </div>
-
       </body>
 
-    </html>
+      </html>
+
   `;
 
   return html_page;
@@ -457,24 +447,26 @@ function edit_task_form ( task )
 
 exports.edit_task_form = edit_task_form;
 
-*/
-/* generate_post_confirm: POST confirmation HTML page template 
-
-function generate_post_confirm ()
+/* generate_edit_confirmed : template for page to be displayed
+ * when a task was successfuly edited */
+function generate_edit_confirmed ()
 {
   return `
     <html>
+
       <head>
-          <title>POST receipt - ${task.id}</title>
+          <title>Task Altered</title>
           <meta charset="utf-8"/>
           <link rel="icon" href="favicon.ico"/>
           <link rel="stylesheet" href="w3.css"/>
       </head>
+    
       <body>
+
         <div class="w3-card-4">
           
           <header class="w3-container w3-lime">
-            <h1>Task inserted!</h1>
+            <h1>Task altered!</h1>
           </header>
 
           <div
@@ -485,19 +477,52 @@ function generate_post_confirm ()
           </div>
 
         </div>
+
       </body>
+    
     </html>
+
   `;
 }
 
-exports.generate_post_confirm = generate_post_confirm;
-*/
-/*
-      "id": "t1",
-      "dateCreated": "20/11/2020",
-      "dateDued": "21/11/2020",
-      "who": "Paulo Barbosa",
-      "what": "Task 1",
-      "type": "Task Type 1",
-      "status": "Ongoing"
-*/
+exports.generate_edit_confirmed = generate_edit_confirmed;
+
+/* generate_clear_page : template for page to be presented
+ * when all completed tasks are deleted from the database */
+function generate_clear_page ()
+{
+  return `
+    <html>
+
+      <head>
+          <title>Tasks Cleared</title>
+          <meta charset="utf-8"/>
+          <link rel="icon" href="favicon.ico"/>
+          <link rel="stylesheet" href="w3.css"/>
+      </head>
+    
+      <body>
+
+        <div class="w3-card-4">
+          
+          <header class="w3-container w3-lime">
+            <h1>Task Cleared!</h1>
+          </header>
+
+          <div
+            class="w3-indigo w3-panel w3-border w3-round-large"
+            style="width: 25% !important; margin: auto; margin-top: 5%"
+          >
+            <p class="w3-center"><a href="/tasks">Go Back</a></p>
+          </div>
+
+        </div>
+
+      </body>
+    
+    </html>
+
+  `;
+}
+
+exports.generate_clear_page = generate_clear_page;

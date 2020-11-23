@@ -7,7 +7,7 @@
       "who": "Paulo Barbosa",
       "what": "Enable Task Edition",
       "type": "DAW2020",
-      "status": "Ongoing"
+      "status": "Completed"
     },
     {
       "id": "t4",
@@ -28,15 +28,6 @@
       "status": "Completed"
     },
     {
-      "id": "t2",
-      "dateCreated": "19/11/2020",
-      "dateDued": "24/11/2020",
-      "who": "Paulo Barbosa",
-      "what": "Add DELETE functionality",
-      "type": "DAW2020",
-      "status": "Ongoing"
-    },
-    {
       "id": "t5",
       "dateCreated": "22/11/2020",
       "dateDued": "24/11/2020",
@@ -53,6 +44,15 @@
       "what": "Basic interface",
       "type": "DAW2020",
       "status": "Completed"
+    },
+    {
+      "id": "t25",
+      "dateCreated": "23/11/2020",
+      "dateDued": "24/11/2020",
+      "who": "Paulo Barbosa",
+      "what": "Clear Completed Functionality",
+      "type": "DAW2020",
+      "status": "Ongoing"
     }
   ]
 }
