@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/Users/paulobarbosa/Desktop/DAW2020/Project%20Record%20(Submis%C3%B5es)/pr.dtd">
+
+<pr>
+    <meta>
+        <key>DAW_2020_PG40160_TPC6</key>
+        <title>TPC 6 (Desenvolvimento de Aplicações WEB)</title>
+        <bdate>18 de novembro de 2020</bdate>
+        <edate>25 de novembro de 2020</edate>
+        <supervisor>José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <member id="pg40160">
+            <name>Paulo Jorge da Silva Barbosa</name>
+            <email>pjbarbosa98@gmail.com</email>
+        </member>
+    </team>
+    <abstract>
+        <p>
+            Inicialmente, foi definida uma estrutura para a base de dados.
+            Foi criada uma coleção designada de <b>`tasks`</b> com os campos pedidos no
+            enunciado do trabalho de casa.
+            Adicionalmente, foi inserido um campo <i>`status`</i> que pode ter os valores
+            <i>`Ongoing`</i> e <i>`Completed`</i>. Estes indicam se uma tarefa está a 
+            decorrer ou já foi terminada, respetivamente.            
+        </p>
+
+        <p>
+            O servidor foi, primeiramente, desenvolvido em três modulos:
+            O módulo principal que corre o servidor (ficheiro <i>`server.js`</i>),
+            o módulo que lida com recursos estáticos (ficheiro <i>`static.js`</i>)
+            e o módulo que gera os templates das páginas web a serem apresentadas
+            na aplicação (ficheiro <i>`templates.js`</i>).
+        </p>
+
+        <p>
+            A pasta <i>`public`</i> contém os recursos que são usados no módulo
+            dos recursos estáticos mencionado anteriormente.
+            Nesta podemos observar os ficheiros <i>`favicon.ico`</i>, <i>`favicon.png`</i> 
+            <i>`w3.css`</i> em que os dois primeiros contêm uma imagem (para ser
+            apresentada no cabeçalho da página WEB) e o último consiste numa <i>stylesheet</i>
+            que vai ser usada em todas as páginas da aplicação.
+        </p>
+
+        <p>
+            Por último, quando a aplicação se encontrava funcional, os três módulos
+            foram unidos num só (ficheiro <i>`spa_server.js`</i>) para obter uma
+            <b>Single Page Application</b>.
+        </p>
+
+        <p>
+            Para correr o servidor basta correr os comandos:
+            <i>`cd db/`</i>, <i>`json-server --watch db.json -p 3001`</i>,
+            <i>`cd ..`</i> e, por último, <i>`npm run spa_start`</i>.
+        </p>
+
+    </abstract>
+    <deliverables>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T6/db/db.json">
+            Base de Dados
+        </link>
+
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T6/server.js">
+            Módulo principal
+        </link>
+        
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T6/static.js">
+            Módulo dos recursos estáticos
+        </link>
+        
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T6/templates.js">
+            Módulo dos templates
+        </link>
+
+        <link url="https://github.com/PJBarbosa98/DAW2020/tree/main/T6/public">
+            Pasta `Public` (que contem os recursos estáticos)
+        </link>
+
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T6/spa_server.js">
+            Single Page Application Server
+        </link>
+
+    </deliverables>
+</pr>
