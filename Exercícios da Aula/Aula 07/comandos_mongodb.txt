@@ -1,0 +1,49 @@
+*********************************************************************
+*
+* Comandos MongoDB
+*
+*********************************************************************
+
+- Importar ficheiro JSON para o MongoDB
+
+$ mongoimport -d DAW2020 -c students --jsonArray DAW2020.json 
+
+- Apagar Base de Dados
+
+$ use [ Nome da Base de Dados ]
+$ db.dropDatabase()
+
+- Apagar coleção
+
+$ db.[ Coleção ].drop()
+
+- Inserir Documento
+
+Para vários registos:
+	$ db.[ Coleção ].insert([{...}, ..., {...}])
+
+Para um registo:
+	$ db.[ Coleção ].insert({...})
+
+- Fazer uma query
+
+$ db.[ Coleção ].find({ Seleção por linhas }, { Seleção por colunas })
+
+- Atualização de um registo
+
+$ db.[ Coleção ].update( [ Seleção de Registo ], [ Dados atualizados ] )
+
+	por exemplo,
+	db.students.update({numero:"A84464"}, {#set:{nome:"Maria Assunção"})
+
+- Apagar registo
+
+$ db.[ Coleção ].remove({ Critérios de Seleção })
+
+- Limitar o número de registos
+
+$ db.[ Coleção ].find( QUERY ).limit(k), k => número de registos a apresentar
+
+- Saltar um dado número de registos
+
+$ db.[ Coleção ].find( QUERY ).skip(k), k => número de registos a saltar
