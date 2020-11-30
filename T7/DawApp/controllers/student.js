@@ -21,4 +21,11 @@ module.exports.lookUp = id => {
 module.exports.insert = student => {
 	var newStudent = new Student(student);
 	return newStudent.save();
+};
+
+module.exports.update = (student) => {
+	const query = { numero: student.numero };
+	return Student
+		.findOneAndUpdate(query, student)
+		.exec();
 }

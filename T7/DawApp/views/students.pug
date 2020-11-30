@@ -19,10 +19,16 @@ block content
 								a(href='/students/' + s.numero) #{s.numero}
 							td= s.nome
 							td= s.git
+							td
+								a(href='/students/edit/' + s.numero) Editar
+							td Apagar
 		else
 			.w3-container
 				p Sem alunos...
 		br
+		.w3-container.w3-center
+			.w3-button.w3-round.w3-teal
+				a(class='button' href='students/register') Registar um novo aluno
 		br
 		footer.w3-container.w3-teal
 			address Gerado por DawApp :: novembro, 2020 :: pjb

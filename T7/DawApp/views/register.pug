@@ -1,0 +1,29 @@
+extends layout
+
+block content
+	.w3-container.w3-teal.w3-center
+		h1 Registo de um aluno
+		p Introduza a informação nesta página!
+	br
+	.w3-container.w3-center
+		form(action="/students", method="POST")
+			p
+				| Número
+				br
+				input(name='numero', value='', type='text')
+			p
+				| Nome
+				br
+				input(name='nome', value='', type='text')
+			p
+				| Git
+				br
+				input(name='git', value='', type='text')
+			p
+				| TPC (8 valores booleanos separados por vírgulas)
+				br
+				input(name='tpc', value='', type='text')
+			input(value='Registrar', type='submit')
+	br
+	.w3-container.w3-center
+		a(class='button' href='/students') Voltar
