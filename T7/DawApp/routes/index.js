@@ -1,8 +1,3 @@
-// TO DO:
-// FIX PUT ERROR
-// MongoError: Performing an update on the path '_id' would modify the immutable field '_id'
-
-
 var express = require('express');
 var router = express.Router();
 
@@ -86,15 +81,13 @@ router.post('/students', function(req, res) {
 	// handle PUT request (student edition)
 	if (req.body._method == 'PUT') {
 		// update student information
+		Student.delete(numero)
+		.then(data => console.log('Removido registo antigo'))
+		.catch(err => res.render('error', { error: err }));
 
 		Student.update(new_student)
 		.then(data => res.render('index', { title: 'Informação alterada!' }))
-		.catch(err => res.render('error', { error: err }));
-	
-		//Student.update(new_student)
-		//.then(data => res.render('index', { title: 'Informação alterada!' }))
-		//.catch(err => res.render('error', { error: err }));
-
+		.catch(err => res.render('error', { error: err }));	
 	}
 
 	// handle POST request (student registration)
@@ -107,13 +100,17 @@ router.post('/students', function(req, res) {
 	}
 })
 
-
-
-
-
 // GET student's delete page
 
-
-// DELETE request goes here
+router.get(/\/students\/delete\/(A|PG)[0-9]+$/, function(req, res) {
+	
+	// retrieve student id
+	let parts = req.url.split('/');
+	let student_id = parts[parts.length-1];
+	
+	Student.delete(student_id)
+	.then(data => res.render('index', { title: 'Aluno removido!'}))
+	.catch(err => res.render('error', { error: err }));
+});
 
 module.exports = router;

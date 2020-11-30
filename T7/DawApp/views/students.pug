@@ -21,7 +21,8 @@ block content
 							td= s.git
 							td
 								a(href='/students/edit/' + s.numero) Editar
-							td Apagar
+							td
+								a(href='/students/delete/' + s.numero) Apagar
 		else
 			.w3-container
 				p Sem alunos...

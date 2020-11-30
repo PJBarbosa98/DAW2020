@@ -23,9 +23,18 @@ module.exports.insert = student => {
 	return newStudent.save();
 };
 
-module.exports.update = (student) => {
-	const query = { numero: student.numero };
+// delete a student record
+module.exports.delete = id => {
 	return Student
-		.findOneAndUpdate(query, student)
+		.deleteOne({ numero: id })
 		.exec();
 }
+
+// update a student record
+module.exports.update = student => {
+	var upsertData = student.toObject();
+	// TO DO: remove with function to remove
+	delete upsertData._id;
+	return Student.update({_id: student._id}, upsertData, { upsert: true })
+		.exec();
+};
