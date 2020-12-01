@@ -101,7 +101,6 @@ router.post('/students', function(req, res) {
 })
 
 // GET student's delete page
-
 router.get(/\/students\/delete\/(A|PG)[0-9]+$/, function(req, res) {
 	
 	// retrieve student id

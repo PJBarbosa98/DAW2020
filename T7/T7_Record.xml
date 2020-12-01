@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/Users/paulobarbosa/Desktop/DAW2020/Project%20Record%20(Submis%C3%B5es)/pr.dtd">
+<pr>
+    <meta>
+        <key>DAW_2020_PG40160_TPC7</key>
+        <title>TPC 7 (Desenvolvimento de Aplicações WEB)</title>
+        <bdate>25 de novembro de 2020</bdate>
+        <edate>02 de dezembro de 2020</edate>
+        <supervisor>José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <member id="pg40160">
+            <name>Paulo Jorge da Silva Barbosa</name>
+            <email>pjbarbosa98@gmail.com</email>
+        </member>
+    </team>
+    <abstract>
+        <p>
+            Inicialmente, foi criada a aplicação 'DawApp' baseada no exemplo
+            da aula 7 (ver secção <b>deliverables</b>).
+            O ficheiro 'DAW2020.json', que contém informação relativa aos
+            alunos da UC Desenvolvimento de Aplicações WEB, foi importado
+            para o MongoDb. Foi, assim, criada uma base de dados com o nome
+            <b>DAW2020</b> e uma coleção <b>students</b> que contém a
+            informação presente no ficheiro.
+            A nossa aplicação usará esta base de dados.
+        </p>
+
+        <p>
+            De seguida, foram criadas funções de comunicação com a base de dados
+            através da biblioteca mongoose.
+            Na diretoria <b>'controllers/student.js'</b>, podemos observar as
+            funções <i>delete</i> e <i>update</i> que apagam e atualizam um registo
+            da coleção <b>`students`</b> da base de dados, respetivamente.
+        </p>
+
+        <p>
+            Na diretoria <b>'views/'</b> foram escritos os templates a serem usados na aplicação.
+            Estes foram escritos em pug.
+        </p>
+
+        <p>
+            Por último, em <b>'routes/index.js'</b> foi escrito o módulo principal do servidor.
+            Aqui, foram definidas as respostas que este fornece a cada pedido (tendo em
+            atenção o que foi especificado no enunciado do trabalho de casa).
+        </p>
+    </abstract>
+    <deliverables>
+        <link url=
+            "https://github.com/PJBarbosa98/DAW2020/tree/main/Exerc%C3%ADcios%20da%20Aula/Aula%2007">
+                Aplicação DawApp criada na sétima aula.
+            </link>
+        <link url=
+            "https://github.com/PJBarbosa98/DAW2020/blob/main/Exerc%C3%ADcios%20da%20Aula/Aula%2007/DAW2020.json">
+                Dataset usado para a criação da base de dados.
+            </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T7/DawApp/controllers/student.js">
+            Controlador da coleção student.
+        </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/tree/main/T7/DawApp/views">
+            Templates usados na aplicação.
+        </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T7/DawApp/routes/index.js">
+            Módulo principal do servidor.
+        </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T7/TPC7.txt">
+            Enunciado do trabalho de casa.
+        </link>
+    </deliverables>
+</pr>
