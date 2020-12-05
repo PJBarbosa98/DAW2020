@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/Users/paulobarbosa/Desktop/DAW2020/Project%20Record%20(Submis%C3%B5es)/pr.dtd">
+<pr>
+    <meta>
+        <key>DAW_2020_PG40160_TPC8</key>
+        <title>TPC 8 (Desenvolvimento de Aplicações WEB)</title>
+        <bdate>02 de dezembro de 2020</bdate>
+        <edate>09 de dezembro de 2020</edate>
+        <supervisor>José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <member id="pg40160">
+            <name>Paulo Jorge da Silva Barbosa</name>
+            <email>pjbarbosa98@gmail.com</email>
+        </member>
+    </team>
+    <abstract>
+        <p>
+            Inicialmente, o ficheiro <b>`html_templates.js`</b> foi alterado.
+            Na função <i>fileForm</i>, foi criada uma <i>div</i> onde os
+            novos campos do formulário seriam inseridos. Adicionalmente, foi
+            também programado um butão com a intenção de inserir estes novos
+            campos no formulário.
+        </p>
+    </abstract>
+    <deliverables>
+        <link url=""></link>
+        <link url=""></link>
+    </deliverables>
+</pr>

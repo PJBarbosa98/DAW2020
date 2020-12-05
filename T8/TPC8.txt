@@ -1,2 +1,11 @@
-TPC - enviar mais do que um ficheiro para tpc
-(formulário dinâmico -> butão '+1' para adicionar outro ficheiro para selecionar)
+Desenvolvimento de Aplicações WEB -- TPC8
+Paulo Barbosa (PG40160)
+
+Tarefa:
+	Completar a APP desenvolvida na Aula 08 (ver pasta) de modo a adicionar a funcionalidade
+	de permitir fazer upload de mais do que um ficheiro ao mesmo tempo.
+	
+	Ideia:
+		Formulário dinâmico.
+		Fazer um butão para adicionar outro ficheiro para selecionar.
+	

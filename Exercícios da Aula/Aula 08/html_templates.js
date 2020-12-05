@@ -1,4 +1,3 @@
-
 exports.geraPostConfirm = geraPostConfirm
 exports.fileList = fileList
 exports.fileForm = fileForm
