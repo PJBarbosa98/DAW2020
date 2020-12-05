@@ -22,9 +22,26 @@
             também programado um butão com a intenção de inserir estes novos
             campos no formulário.
         </p>
+        <p>
+            De seguida, usando o <b>jQuery</b>, foi criado um <i>script</i>
+            com a intenção de inserir conteúdo na <i>div</i> mencionada no
+            paragráfo anterior.
+        </p>
+        <p>
+            Por último, foi alterado o servidor de modo a permitir tratar
+            o upload de vários ficheiros simultaneamente (recebendo-os
+            no formato de array).
+        </p>
     </abstract>
     <deliverables>
-        <link url=""></link>
-        <link url=""></link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T8/html_templates.js">
+            Ficheiro alterado que contem os templates.
+        </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T8/public/file_upload.js">
+            Script de inserção de conteúdo no formulário.
+        </link>
+        <link url="https://github.com/PJBarbosa98/DAW2020/blob/main/T8/server.js">
+            Servidor.
+        </link>
     </deliverables>
 </pr>
