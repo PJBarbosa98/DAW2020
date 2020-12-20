@@ -1,0 +1,20 @@
+Database:
+	- eLibrary
+
+ADMIN Credentials:
+	id: admin@admin
+	pw: sysadmin
+
+Collections:
+	- users 		(holds user information)
+	- articles 	(holds the resources uploaded by users)
+
+Insert an article:
+	> db.articles.insert({
+	... "title": "test",
+	... "category": "category",
+	... "author": "admin@admin",
+	... "tags": ["tag1"],
+	... "date": "2020-12-21",
+	... "deliverables": []
+	... })

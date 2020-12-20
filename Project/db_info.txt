@@ -1,5 +1,0 @@
-Base de Dados:
-	- eLibrary
-
-Coleções:
-	- users (guarda informação sobre os utilizadores)
