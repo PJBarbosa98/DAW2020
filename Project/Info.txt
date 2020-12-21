@@ -14,6 +14,7 @@ Insert an article:
 	... "title": "test",
 	... "category": "category",
 	... "author": "admin@admin",
+	... "private": "false"
 	... "tags": ["tag1"],
 	... "date": "2020-12-21",
 	... "deliverables": []

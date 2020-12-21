@@ -28,7 +28,7 @@
 	</div>
 
 	<div class="container mt-5">
-		<a href="google.pt" class="btn btn-secondary">New Post</a>
+		<a href="/users/new" class="btn btn-secondary">New Post</a>
 	</div>
 
 	<div class="container mt-5 text-justify text-center">
@@ -41,6 +41,7 @@
 					<tr>
 						<th scope="col">Title</th>
 						<th scope="col">Category</th>
+						<th scope="col">Tags</th>
 						<th scope="col">Deliverables</th>
 						<th scope="col">Edit</th>
 						<th scope="col">Delete</th>
@@ -55,10 +56,46 @@
 						<tr>
 							<td> <%= a.title %> </td>
 							<td> <%= a.category %> </td>
-							<td>ADD LINK</td>
-							<td>ADD LINK</td>
-							<td>ADD LINK</td>
-							<td>ADD LINK</td>
+							
+							<td>
+								<div class="dropdown">
+									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Check Tabs
+									</button>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<% for (var i = 0; i < a.tags.length; i++) { %>
+										<a class="dropdown-item"> <%= a.tags[i] %></a>
+									<% } %>	
+									</div>
+								</div>
+							</td>
+
+							<% if (a.deliverables.length == 0) { %>
+								<td>No deliverables.</td>
+							<% } else { %>
+							<td>
+								<div class="dropdown">
+									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Check Deliverables
+									</button>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<% for (var i = 0; i < a.deliverables.length; i++) { %>
+										<a class="dropdown-item"> <%= a.deliverables[i] %></a>
+									<% } %>	
+									</div>
+								</div>
+							</td>
+							<% } %>
+
+							<td>
+								<a href="/users/edit" class="btn btn-secondary">Edit</a>
+							</td>
+							<td>
+								<a href="/users/delete" class="btn btn-secondary">Delete</a>
+							</td>
+							<td>
+								<a href="/users/download" class="btn btn-secondary">Download</a>
+							</td>
 						</tr>
 
 					<% }) %>

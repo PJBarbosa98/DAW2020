@@ -99,4 +99,11 @@ router.get('/logout', (req, res) => {
 	res.redirect('/users/login');
 });
 
+// New article form
+router.get('/new', (req, res) => {
+	res.render('new_article_form', {
+		name: req.user.name
+	});
+});
+
 module.exports 	= router;
