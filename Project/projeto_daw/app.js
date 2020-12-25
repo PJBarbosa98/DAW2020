@@ -12,10 +12,6 @@ const PORT 				= process.env.PORT || 7710;
 const multer 			= require('multer');
 const upload 			= multer({ dest: "uploads/" });
 
-
-var multer = require('multer');
-var upload = multer({ dest: "fileStore/" });
-
 // Passport Configuration
 require('./config/passport')(passport);
 

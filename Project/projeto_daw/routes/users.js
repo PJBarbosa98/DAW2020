@@ -5,6 +5,8 @@ const passport 	= require('passport');
 
 // User model
 const User 		= require('../models/User');
+// Article model
+const Article 	= require('../models/Article');
 
 // Login Page
 router.get('/login', (req, res) => res.render('login'));
@@ -105,5 +107,63 @@ router.get('/new', (req, res) => {
 		name: req.user.name
 	});
 });
+
+// Post article handle
+router.post('/articles', (req, res) => {
+
+	var title 			= req.body.title;
+	var category 		= req.body.category;
+	var author 			= req.user.email;
+	var private 		= req.body.private;
+	var tags 			= req.body.tags.split(',');
+	var date 			= req.body.date;
+	var deliverables 	= req.body.deliverables;
+
+	let errors 			= [];
+
+	// Check all fields are filled (except date)
+	if (!title || !category || !private || !tags || !deliverables) {
+		errors.push({ msg: 'Please fill in all fields!'});
+	}
+
+	// Default date to date of submission (if not filled in)
+	if (!date) {
+		date = String(new Date().toISOString().substr(0, 10));
+	}
+
+	// In case there are any errors...
+	if (errors.length > 0) {
+		res.render('new_article_form', {
+			name: req.user.name,
+			errors
+		});
+	}
+
+	// Otherwise...
+	else {
+		res.send('i did it bruh...');
+
+		let newArticle = new Article({
+			title,
+			category,
+			author,
+			private,
+			tags,
+			date,
+			deliverables
+		});
+
+		console.log('########################################');
+		console.log(newArticle);
+		console.log('########################################');
+
+	}
+
+
+
+});
+
+//{"title":"title","category":"cat","private":"false","tags":"tag2, tag3",
+//"date":"25-12-2020","deliverables":["12 Rules for Life.pdf","book.odt"]}
 
 module.exports 	= router;
