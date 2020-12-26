@@ -24,3 +24,9 @@ module.exports.fetch_articles = ( email ) => {
 		.sort({ date: 1 })
 		.exec();
 }
+
+// Insert article into database.
+module.exports.insert = ( article ) => {
+	var newArticle = new Article(article);
+	return newArticle.save();
+};

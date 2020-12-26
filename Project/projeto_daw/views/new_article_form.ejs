@@ -15,7 +15,7 @@
 		<div class="card card-body">
 			<h1 class="text-center mb-3"><i class="fas fa-newspaper"></i>  Add Article</h1>
 			<%- include ('./partials/messages') %>
-			<form action="articles" method="POST">
+			<form action="articles" method="POST" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="title">Title</label>
 					<input

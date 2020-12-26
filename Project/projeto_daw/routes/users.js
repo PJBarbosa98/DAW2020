@@ -2,11 +2,19 @@ const express 	= require('express');
 const router 	= express.Router();
 const bcrypt 	= require('bcryptjs');
 const passport 	= require('passport');
+const fs 		= require('fs');
 
 // User model
-const User 		= require('../models/User');
+const User 			= require('../models/User');
+
+// Article controller
+var Article 		= require('../controllers/Article');
 // Article model
-const Article 	= require('../models/Article');
+var ArticleModel 	= require('../models/Article');
+
+// File Upload
+const multer 	= require('multer');
+const upload 	= multer({ dest: "uploads/" });
 
 // Login Page
 router.get('/login', (req, res) => res.render('login'));
@@ -109,7 +117,7 @@ router.get('/new', (req, res) => {
 });
 
 // Post article handle
-router.post('/articles', (req, res) => {
+router.post('/articles', upload.array('deliverables'), (req, res) => {
 
 	var title 			= req.body.title;
 	var category 		= req.body.category;
@@ -117,12 +125,13 @@ router.post('/articles', (req, res) => {
 	var private 		= req.body.private;
 	var tags 			= req.body.tags.split(',');
 	var date 			= req.body.date;
-	var deliverables 	= req.body.deliverables;
+	var deliverables 	= [];
 
 	let errors 			= [];
 
 	// Check all fields are filled (except date)
-	if (!title || !category || !private || !tags || !deliverables) {
+
+	if (!title || !category || !private || !tags) {
 		errors.push({ msg: 'Please fill in all fields!'});
 	}
 
@@ -141,9 +150,37 @@ router.post('/articles', (req, res) => {
 
 	// Otherwise...
 	else {
-		res.send('i did it bruh...');
 
-		let newArticle = new Article({
+		for (let idx = 0; idx < req.files.length; ++idx) {
+
+			// One folder per author
+
+			let oldPath = __dirname + '/../' + req.files[idx].path;
+			let newPath = __dirname + '/../fileStore/' + author + '/' + req.files[idx].originalname;
+
+			let fileDir = __dirname + '/../fileStore/' + author + '/';
+
+			if (!fs.existsSync(fileDir)) {
+
+				fs.mkdir(fileDir, { recursive: true }, (err) => {
+					if (err)
+						throw err;
+				});
+			}
+
+			// to do : check if file already exists
+			// if it does, do not upload
+
+			fs.rename(oldPath, newPath, function(err) {
+				if (err)
+					throw err;
+			});
+
+			// Add deliverable to deliverables
+			deliverables.push(req.files[idx].originalname);
+		}
+
+		let newArticle = new ArticleModel({
 			title,
 			category,
 			author,
@@ -153,17 +190,12 @@ router.post('/articles', (req, res) => {
 			deliverables
 		});
 
-		console.log('########################################');
-		console.log(newArticle);
-		console.log('########################################');
-
+		// Insert article information into database
+		Article.insert(newArticle)
+			.then( ()  => res.redirect('/dashboard'))
+			.catch(err => res.render(err));
 	}
 
-
-
 });
-
-//{"title":"title","category":"cat","private":"false","tags":"tag2, tag3",
-//"date":"25-12-2020","deliverables":["12 Rules for Life.pdf","book.odt"]}
 
 module.exports 	= router;
