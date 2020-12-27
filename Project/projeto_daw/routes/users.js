@@ -3,14 +3,15 @@ const router 	= express.Router();
 const bcrypt 	= require('bcryptjs');
 const passport 	= require('passport');
 const fs 		= require('fs');
+const mongoose 	= require('mongoose');
 
 // User model
 const User 			= require('../models/User');
 
 // Article controller
-var Article 		= require('../controllers/Article');
+var ArticleCont 	= require('../controllers/Article');
 // Article model
-var ArticleModel 	= require('../models/Article');
+var Article 		= require('../models/Article');
 
 // File Upload
 const multer 	= require('multer');
@@ -125,9 +126,15 @@ router.post('/articles', upload.array('deliverables'), (req, res) => {
 	var private 		= req.body.private;
 	var tags 			= req.body.tags.split(',');
 	var date 			= req.body.date;
-	var deliverables 	= [];
+	var deliverables	= [];
+	var comments 		= [];
 
 	let errors 			= [];
+
+	// Remove whitespace from tags
+	for (let j = 0; j < tags.length; ++j) {
+		tags[j] = tags[j].trim();
+	}
 
 	// Check all fields are filled (except date)
 
@@ -135,67 +142,106 @@ router.post('/articles', upload.array('deliverables'), (req, res) => {
 		errors.push({ msg: 'Please fill in all fields!'});
 	}
 
-	// Default date to date of submission (if not filled in)
-	if (!date) {
-		date = String(new Date().toISOString().substr(0, 10));
-	}
-
-	// In case there are any errors...
-	if (errors.length > 0) {
-		res.render('new_article_form', {
-			name: req.user.name,
-			errors
-		});
-	}
-
-	// Otherwise...
-	else {
-
-		for (let idx = 0; idx < req.files.length; ++idx) {
-
-			// One folder per author
-
-			let oldPath = __dirname + '/../' + req.files[idx].path;
-			let newPath = __dirname + '/../fileStore/' + author + '/' + req.files[idx].originalname;
-
-			let fileDir = __dirname + '/../fileStore/' + author + '/';
-
-			if (!fs.existsSync(fileDir)) {
-
-				fs.mkdir(fileDir, { recursive: true }, (err) => {
-					if (err)
-						throw err;
+	// Check if title already exists
+	ArticleCont.title_exists(title)
+		.then(num_of_records => {
+			if (num_of_records > 0) {
+				errors.push({ msg: 'Article already exists!'});
+				res.render('new_article_form', {
+					name: req.user.name,
+					errors
 				});
 			}
+			else {
 
-			// to do : check if file already exists
-			// if it does, do not upload
+				// Default date to date of submission (if not filled in)
+				if (!date) {
+					date = String(new Date().toISOString().substr(0, 10));
+				}
 
-			fs.rename(oldPath, newPath, function(err) {
-				if (err)
-					throw err;
-			});
+				// In case there are any errors...
+				if (errors.length > 0) {
+					res.render('new_article_form', {
+						name: req.user.name,
+						errors
+					});
+				}
 
-			// Add deliverable to deliverables
-			deliverables.push(req.files[idx].originalname);
-		}
+				// Otherwise...
+				else {
 
-		let newArticle = new ArticleModel({
-			title,
-			category,
-			author,
-			private,
-			tags,
-			date,
-			deliverables
+					for (let idx = 0; idx < req.files.length; ++idx) {
+
+						// One folder per author
+
+						let oldPath = __dirname + '/../' + req.files[idx].path;
+						let newPath = __dirname + '/../fileStore/' + author + '/' + req.files[idx].originalname;
+
+						let fileDir = __dirname + '/../fileStore/' + author + '/';
+
+						// Create directory, if it does not exist
+						if (!fs.existsSync(fileDir)) {
+
+							fs.mkdir(fileDir, { recursive: true }, (err) => {
+								if (err)
+									throw err;
+							});
+						}
+
+						fs.rename(oldPath, newPath, function(err) {
+							if (err)
+								throw err;
+						});
+
+						// Add deliverable to deliverables
+						deliverables[idx] = req.files[idx].originalname;
+
+					}
+
+					let newArticle = new Article({
+						title,
+						category,
+						author,
+						private,
+						tags,
+						date,
+						deliverables,
+						comments
+					});
+
+					// Insert article information into database
+					ArticleCont.insert(newArticle)
+						.then( ()  => res.redirect('/dashboard'))
+						.catch(err => res.render('error', { error_message: 'Cannot insert article!' }));
+				}
+
+			}
+		})
+		.catch(err => {
+			res.render('error', { error_message: 'Article with that title already exists!' });
 		});
 
-		// Insert article information into database
-		Article.insert(newArticle)
-			.then( ()  => res.redirect('/dashboard'))
-			.catch(err => res.render(err));
-	}
 
 });
+
+// Delete article from database
+router.get('/delete/:title', (req, res) => {
+
+	// Fetch title
+	var parts = req.url.split('/');
+	var title = decodeURI(parts[parts.length - 1]);
+
+	// Delete by title
+	ArticleCont.delete_by_title(title)
+		.then( ()  => res.redirect('/dashboard'))
+		.catch(err => res.render('error', { error_message: 'Cannot delete article!' }));
+});
+
+/*
+	// Fetch article by title.
+	ArticleCont.fetch_by_title(title)
+		.then(data => res.send(data))
+		.catch(err => res.send('oh mamamia'));
+*/
 
 module.exports 	= router;

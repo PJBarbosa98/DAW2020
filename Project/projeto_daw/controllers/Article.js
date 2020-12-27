@@ -1,6 +1,7 @@
 // Controller for Article
 
 var Article 	= require('../models/Article');
+var mongoose 	= require('mongoose');
 
 // Count number of articles in the system.
 module.exports.count = () => {
@@ -29,4 +30,26 @@ module.exports.fetch_articles = ( email ) => {
 module.exports.insert = ( article ) => {
 	var newArticle = new Article(article);
 	return newArticle.save();
+};
+
+// Check if an article already exists with that title.
+module.exports.title_exists = ( title ) => {
+	return Article
+		.find({ "title": title })
+		.countDocuments()
+		.exec();
+};
+
+// Fetch article by title.
+module.exports.fetch_by_title = ( title ) => {
+	return Article
+		.findOne({ "title": title })
+		.exec();
+};
+
+// Delete article by title.
+module.exports.delete_by_title = ( title ) => {
+	return Article
+		.deleteOne({ "title": title })
+		.exec();
 };

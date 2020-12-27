@@ -18,7 +18,7 @@ const ArticleSchema = new mongoose.Schema({
 		required: 	true
 	},
 	tags: {
-		type: 		[String],
+		type: 		[ String ],
 		required: 	false
 	},
 	date: {
@@ -26,34 +26,15 @@ const ArticleSchema = new mongoose.Schema({
 		default: 	Date.now
 	},
 	deliverables: {
-		type: 		[String] ,
-		required: 	false
+		type: 		[ String ],
+		required: 	true
+	},
+	comments: {
+		type: 		[ { body: String, byWho: String } ],
+		required: 	true
 	}
 });
 
 const Article 		= mongoose.model('Article', ArticleSchema);
 
 module.exports 		= Article;
-
-const UserSchema 	= new mongoose.Schema({
-	name: {
-		type: 		String,
-		required: 	true
-	},
-	email: {
-		type: 		String,
-		required: 	true
-	},
-	filiation: {
-		type: 		String,
-		required: 	false	
-	},
-	password: {
-		type: 		String,
-		required: 	true
-	},
-	date: {
-		type: 		Date,
-		default: 	Date.now
-	}
-});

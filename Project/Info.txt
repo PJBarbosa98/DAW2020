@@ -17,5 +17,6 @@ Insert an article:
 	... "private": "false"
 	... "tags": ["tag1"],
 	... "date": "2020-12-21",
-	... "deliverables": []
+	... "deliverables": [],
+	... "comments": []
 	... })
