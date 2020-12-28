@@ -237,11 +237,145 @@ router.get('/delete/:title', (req, res) => {
 		.catch(err => res.render('error', { error_message: 'Cannot delete article!' }));
 });
 
-/*
-	// Fetch article by title.
+
+// Edit article
+router.get('/edit/:title', (req, res) => {
+
+	// Fetch title
+	var parts = req.url.split('/');
+	var title = decodeURI(parts[parts.length - 1]);
+
 	ArticleCont.fetch_by_title(title)
-		.then(data => res.send(data))
-		.catch(err => res.send('oh mamamia'));
-*/
+		.then(article => {
+			res.render('article_edit', {
+				name: req.user.name,
+				article: article
+			});
+		})
+		.catch(err => res.render('error', { error_message: 'Cannot fetch article!' }));
+});
+
+// Post edit article (actually a PUT request)
+router.post('/edit/articles', upload.array('deliverables'), (req, res) => {
+
+	var title 			= req.body.title;
+	var category 		= req.body.category;
+	var author 			= req.user.email;
+	var private 		= req.body.private;
+	var tags 			= req.body.tags.split(',');
+	var date 			= req.body.date;
+	var deliverables	= [];
+	var comments 		= [];
+
+	let errors 			= [];
+
+	// Remove whitespace from tags
+	for (let j = 0; j < tags.length; ++j) {
+		tags[j] = tags[j].trim();
+	}
+
+	// Check all fields are filled (except date)
+
+	if (!title || !category || !private || !tags) {
+		errors.push({ msg: 'Please fill in all fields!'});
+	}
+
+	// Default date to date of submission (if not filled in)
+	if (!date) {
+		date = String(new Date().toISOString().substr(0, 10));
+	}
+
+	// In case there are any errors...
+	if (errors.length > 0) {
+		ArticleCont.count()
+			.then(number_of_articles => {
+
+				// Fetch the user's articles
+				ArticleCont.fetch_articles(req.user.email)
+					.then(articles => {
+						res.render('dashboard', {
+							errors,
+							name: req.user.name,
+							number_of_articles: number_of_articles,
+							articles: articles
+						})
+					})
+					.catch(err_2 => res.render('error', { error_message: 'Cannot fetch articles'}));
+			})
+			.catch(err => res.render('error', { error_message: 'Cannot load articles!' }));
+	}
+	// Otherwise...
+	else {
+
+		// Push older articles into 'deliverables'
+		ArticleCont.fetch_by_title(title)
+			.then(data => {
+				for (let j = 0; j < data.deliverables.length; ++j) {
+					deliverables.push(data.deliverables[j]);
+				}
+
+				// New deliverables
+				for (let idx = 0; idx < req.files.length; ++idx) {
+					
+					let oldPath = __dirname + '/../' + req.files[idx].path;
+					let newPath = __dirname + '/../fileStore/' + author + '/' + req.files[idx].originalname;
+
+					let fileDir = __dirname + '/../fileStore/' + author + '/';
+
+					// Create directory, if it does not exist
+					if (!fs.existsSync(fileDir)) {
+						fs.mkdir(fileDir, { recursive: true }, (err) => {
+							if (err)
+								throw err;
+						});
+					}
+					
+					fs.rename(oldPath, newPath, function(err) {
+						if (err)
+							throw err;
+					});
+
+					// Add deliverable to deliverables
+					deliverables.push(req.files[idx].originalname)
+				}
+
+				let newArticle = new Article({
+					title,
+					category,
+					author,
+					private,
+					tags,
+					date,
+					deliverables,
+					comments
+				});
+
+				// Put article in database
+				ArticleCont.delete_by_title(title)
+					.then( ()  => {
+						ArticleCont.insert(newArticle)
+							.then( ()  => {
+								// Redirect to dashboard
+								res.redirect('/dashboard');
+							})
+							.catch(err => { error_message: 'Put Error!' });
+					})
+					.catch(err => { error_message: 'Put error!' });
+
+			})
+			.catch(err => res.render('error', { error_message: 'You cannot change article title!'}));
+
+	}
+
+
+
+
+
+
+
+
+
+});
+
 
 module.exports 	= router;
