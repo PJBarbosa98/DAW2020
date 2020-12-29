@@ -4,6 +4,8 @@ const bcrypt 	= require('bcryptjs');
 const passport 	= require('passport');
 const fs 		= require('fs');
 const mongoose 	= require('mongoose');
+const JSZip 	= require("jszip");
+const FileSaver = require('file-saver');
 
 // User model
 const User 			= require('../models/User');
@@ -367,13 +369,52 @@ router.post('/edit/articles', upload.array('deliverables'), (req, res) => {
 
 	}
 
+});
+
+// Download an article
+router.get('/download/:title', (req, res) => {
+
+	// Fetch title from URL
+	var parts = req.url.split('/');
+	var title = decodeURI(parts[parts.length - 1]);
+
+	// Fetch article from title
+	ArticleCont.fetch_by_title(title)
+		.then(article => {
+
+			// Fetch deliverables' directory
+			var deliverables 	= article.deliverables;
+			var directories 	= [];
+
+			for (let i = 0; i < deliverables.length; ++i) {
+				directories.push(__dirname + '/../fileStore/' + article.author + '/' + deliverables[i]);
+			}
+
+			var zip = new JSZip();
+			zip.file("metadata.txt", JSON.stringify(article));
+			
+			for (let i = 0; i < directories.length; ++i) {
+				let dataBuffer = fs.readFileSync(directories[i], 'binary');
+				zip.file(deliverables[i], dataBuffer, { binary: true });
+			}
+
+			zip
+			.generateNodeStream({type:'nodebuffer',streamFiles:true})
+			.pipe(fs.createWriteStream('out.zip'))
+			.on('finish', function () {
+			    // JSZip generates a readable stream with a "end" event,
+			    // but is piped here in a writable stream which emits a "finish" event.
+			    //console.log("out.zip written.");
+			    res.download(__dirname + '/../out.zip');
+			});
 
 
+		})
+		.catch(err => { error_message: 'Cannot fetch article!' });
 
 
-
-
-
+	// Create project record
+	// Download the deliverable's + project record
 
 });
 
