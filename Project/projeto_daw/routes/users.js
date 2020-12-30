@@ -412,11 +412,38 @@ router.get('/download/:title', (req, res) => {
 		})
 		.catch(err => { error_message: 'Cannot fetch article!' });
 
-
-	// Create project record
-	// Download the deliverable's + project record
-
 });
 
+// User's profile page
+router.get('/:email', (req, res) => {
+
+	// Fetch user email from URL
+	var parts = req.url.split('/');
+	var email = parts[parts.length - 1];
+
+	// Fetch user from user email
+	User.find({ "email": email })
+		.then(data => {
+
+			var user = data[0];
+
+			// Fetch user articles
+			ArticleCont.fetch_public_articles(user.email)
+				.then(art => {
+					console.log(art);
+					res.render('user_page', { user, art });
+
+				})
+				.catch(err => {
+					res.render('error', { error_message: 'Cannot fetch user articles!' });
+				});
+
+		})
+		.catch(err => {
+			res.render('error', { error_message: 'Cannot fetch user!' });
+		});
+
+
+});
 
 module.exports 	= router;

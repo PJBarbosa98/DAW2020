@@ -5,8 +5,13 @@ ADMIN Credentials:
 	id: admin@admin
 	pw: sysadmin
 
+User Credentials:
+	id: lovelyrita@gmail.com
+	pw: thebeatles
+
+
 Collections:
-	- users 		(holds user information)
+	- users 	(holds user information)
 	- articles 	(holds the resources uploaded by users)
 
 Insert an article:

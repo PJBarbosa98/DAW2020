@@ -26,6 +26,14 @@ module.exports.fetch_articles = ( email ) => {
 		.exec();
 }
 
+// Fetch public articles via e-mail.
+module.exports.fetch_public_articles = (email) => {
+	return Article
+		.find({ $and: [ { "author" : email }, { "private" : "false" } ] })
+		.sort({ "title": 1 })
+		.exec();
+}
+
 // Insert article into database.
 module.exports.insert = ( article ) => {
 	var newArticle = new Article(article);
@@ -53,3 +61,20 @@ module.exports.delete_by_title = ( title ) => {
 		.deleteOne({ "title": title })
 		.exec();
 };
+
+// Fetch all articles in the db. (For admin's feed)
+module.exports.fetch_all_articles = () => {
+	return Article
+		.find()
+		.sort({ "title": 1 })
+		.exec();
+};
+
+// Fetch visible articles to a given user.
+module.exports.fetch_visible_artiles = ( email ) => {
+	return Article
+		.find({ $or: [ { "author" : email },{ "private" : "false" } ] })
+		.sort({ "title": 1 })
+		.exec();
+};
+
