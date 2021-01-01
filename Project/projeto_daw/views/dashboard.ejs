@@ -58,7 +58,12 @@
 					<% articles.forEach( function (a) { %>
 						
 						<tr>
-							<td> <%= a.title %> </td>
+							<td>
+								<a href="/users/article/<%= a.title %>"
+								style="color: black; text-decoration: underline;">
+									<%= a.title %>
+								</a>
+							</td>
 							<td> <%= a.category %> </td>
 							
 							<td>

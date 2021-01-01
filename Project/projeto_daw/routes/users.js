@@ -430,7 +430,6 @@ router.get('/:email', (req, res) => {
 			// Fetch user articles
 			ArticleCont.fetch_public_articles(user.email)
 				.then(art => {
-					console.log(art);
 					res.render('user_page', { user, art });
 
 				})
@@ -443,7 +442,58 @@ router.get('/:email', (req, res) => {
 			res.render('error', { error_message: 'Cannot fetch user!' });
 		});
 
+});
 
+// Get article page
+router.get('/article/:title', (req, res) => {
+
+	// Fetch title from url (URI to decode special characters)
+	var parts = req.url.split('/');
+	var title = decodeURI(parts[parts.length - 1]);
+
+	// Fetch article from title
+	ArticleCont.fetch_by_title(title)
+		.then(art => {
+			// Display
+			res.render('article_page', { article: art });
+		})
+		.catch(err => {
+			res.render('error', { error_message: 'Cannot fetch article!' });
+		});
+});
+
+// Add comment to article (post request)
+router.post('/article/:title', (req, res) => {
+
+	// Build JSON for comment
+	var comment = '';
+
+	comment += '{ "body" : "';
+	comment += req.body.body;
+	comment += '", "byWho" : "';
+	comment += req.user.email + '" }';
+
+	// Fetch title from URL
+	var parts = req.url.split('/');
+	var title = decodeURI(parts[parts.length - 1]);
+
+	console.log(title);
+	// Fetch article
+	ArticleCont.fetch_by_title(title.trim())
+		.then(article => {
+			// Update it (add comment to 'comments' parameter)
+			article.comments.push(JSON.parse(comment));
+
+			ArticleCont.add_comment(article.title, article.comments)
+				.then( () => {
+					res.redirect('/users/article/' + article.title);
+				})
+				.catch(error => { error_message: 'Put error!' });
+		})
+		.catch(err => {
+			console.log(err);
+			res.render('error', { error_message: 'Cannot fetch article!' });
+		});
 });
 
 module.exports 	= router;

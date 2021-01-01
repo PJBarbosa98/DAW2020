@@ -11,11 +11,8 @@
 	<div class="text-center m-5">
 		<h3>Page for user <%= user.name %> .</h3>
 	</div>
-
 	<div class="container mt-5 text-justify text-center">
-
 		<table class="table table-striped">
-
 		<thead>
 			<tr>
 				<th scope="col">Name</th>
@@ -25,7 +22,6 @@
 				<th scope="col">Number of Articles</th>
 			</tr>
 		</thead>
-		
 		<tbody>
 			<tr>
 				<td> <%= user.name %> </td>
@@ -35,7 +31,6 @@
 					<% var pretty_date = String(user.date).substr(0, 16); %>
 					<%= pretty_date %>
 				</td>
-
 				<td>					
 					<% if (art.length == 0) { %>
 						No articles.
@@ -57,18 +52,12 @@
 								<% } %>
 							</div>
 						</div>
-
 					<% } %>
-
 				</td>
-
 			</tr>
 		</tbody>
-
 		</table>
-
 	</div>
-
 </div>
 
 

@@ -78,3 +78,9 @@ module.exports.fetch_visible_artiles = ( email ) => {
 		.exec();
 };
 
+// Update article (with comments).
+module.exports.add_comment = ( title, comments ) => {
+	return Article
+		.updateOne({ "title": title }, { "comments": comments } )
+		.exec();
+};
