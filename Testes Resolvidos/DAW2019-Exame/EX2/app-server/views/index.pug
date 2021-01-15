@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h1 Lista de Diplomas
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr 
+					th Data
+					th Tipo
+					th Número
+					th Sumário
+			tbody
+				each diploma in diplomas
+					tr.w3-hover-blue
+						td= diploma.data
+						td= diploma.tipo
+						td= diploma.numero
+						td= diploma.sumario
+						td
+							a(href='/diplomas/' + diploma.id) Aceder
