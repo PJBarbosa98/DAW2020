@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h1 Lista de Tipologias
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Designação
+					th Sigla
+					th Estado
+					th ID (Aceder à página)
+			tbody
+				each tipologia in tipologias
+					tr.w3-hover-blue
+						td= tipologia.designacao
+						td= tipologia.sigla
+						td= tipologia.estado
+						td
+							a(href='/tipologia/' + tipologia.id) Aceder
