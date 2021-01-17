@@ -1,0 +1,12 @@
+1. Quantas Entidades estão catalogadas?
+R: 637.
+
+2. A que Tipologias pertence a Entidade ent_ACT?
+R: Administração Central do Estado, Administração Pública e
+Autoridades de supervisão e fiscalização.
+
+3. Em que processos a entidade ent_ANSR participa como Iniciador?
+R: Registo nacional de condutores.
+
+4. De que processos é dona a entidade "Colégio Militar" (ent_CMil)?
+R: Nenhum.

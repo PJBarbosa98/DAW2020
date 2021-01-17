@@ -1,0 +1,11 @@
+1. Quantas Tipologias estão catalogadas?
+R: 69.
+
+2. Quantas Entidades pertencem à Tipologia tip_FSS?
+R: 5.
+
+3. Em que processos a tipologia tip_FA participa como Comunicador?
+R: Nos processos com id: c650.10.019, c650.10.020, c650.10.212 e c650.10.213.
+
+4. A que tipologias pertence a entidade ent_SEF?
+R: Pertence à ACE, AP, FSS e OPC.

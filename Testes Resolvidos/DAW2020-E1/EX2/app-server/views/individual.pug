@@ -1,0 +1,73 @@
+extends layout
+
+block content
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h1 Entidade #{entidade.id}
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Designação
+					th Sigla
+					th Estado
+					th Identificador
+			tbody
+				tr.w3-hover-blue
+					td= entidade.designacao
+					td= entidade.sigla
+					td= entidade.estado
+					td= entidade.id
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h3 Tipologias a que pertence
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Designação
+					th Sigla
+					th Identificador
+			tbody
+				each tipologia in tipologias
+					tr.w3-hover-blue
+						td= tipologia.designacao
+						td= tipologia.sigla
+						td= tipologia.id
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h3 Tipologias das quais é dona
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Título
+					th Código
+					th Identificador
+			tbody
+				each d in dono
+					tr.w3-hover-blue
+						td= d.titulo
+						td= d.codigo
+						td= d.id
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h3 Tipologias nas quais participa
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Tipo de participação
+					th Código
+					th Título
+					th Identificador
+			tbody
+				each p in participante
+					tr.w3-hover-blue
+						td= p.tipoPar
+						td= p.codigo
+						td= p.titulo
+						td= p.id
+	.w3-container.w3-center.w3-margin
+		.w3-button.w3-blue.w3-margin
+			a(href='/') Voltar

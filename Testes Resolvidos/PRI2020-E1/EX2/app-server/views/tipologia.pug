@@ -1,0 +1,77 @@
+extends layout
+
+block content
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h1 Tipologia #{tipologia.sigla}
+			h4= tipologia.designacao
+			p Informação:
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Designação
+					th Sigla
+					th Estado
+			tbody
+				tr.w3-hover-blue
+					td= tipologia.designacao
+					td= tipologia.sigla
+					td= tipologia.estado
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h3 Entidades
+			p Lista de entidades de que é composta:
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Designação
+					th Sigla
+					th ID (Hiperligação)
+			tbody
+				each entidade in entidades
+					tr.w3-hover-blue
+						td= entidade.designacao
+						td= entidade.sigla
+						td
+							a(href='/entidades/' + entidade.id) #{entidade.id}
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h3 Autoridade
+			p Lista de processos em que é dona:
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Título
+					th Código
+					th ID
+			tbody
+				each d in dono
+					tr.w3-hover-blue
+						td= d.titulo
+						td= d.codigo
+						td= d.id
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h3 Participação
+			p Lista de processos em que é participante:
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Título
+					th Código
+					th Tipo de Participação
+					th ID
+			tbody
+				each p in participante
+					tr.w3-hover-blue
+						td= p.titulo
+						td= p.codigo
+						td= p.tipoPar
+						td= p.id
+	.w3-container.w3-center.w3-margin
+		.w3-button.w3-blue.w3-margin
+			a(href='/') Voltar

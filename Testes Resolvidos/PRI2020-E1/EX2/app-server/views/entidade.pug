@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h1 Entidade #{entidade.sigla}
+			p Página da #{entidade.designacao}
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Designação
+					th Sigla
+					th Estado
+					th SIOE
+			tbody
+				tr.w3-hover-blue
+					td= entidade.designacao
+					td= entidade.sigla
+					td= entidade.estado
+					td= entidade.sioe
+	.w3-container.w3-center.w3-margin
+		.w3-button.w3-blue.w3-margin
+			a(href='/') Voltar

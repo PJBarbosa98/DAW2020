@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 		})
 		.then(info => {
 			var token = info.data.token;
-			axios.get(base_url + 'legislacao?token=' + token)
+			axios.get(base_url + 'tipologias/tip_FSS/elementos?token=' + token)
 				.then(dados => {
 					res.render('index', { diplomas: dados.data });
 				})

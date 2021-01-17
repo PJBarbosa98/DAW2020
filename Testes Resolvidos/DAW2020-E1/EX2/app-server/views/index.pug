@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	.w3-container
+		.w3-panel.w3-blue.w3-center
+			h1 Lista de Entidades
+	.w3-container
+		table.w3-table-all.w3-centered
+			thead
+				tr
+					th Designação
+					th Sigla
+					th Estado
+					th Identificador (Página Indivídual)
+			tbody
+				each entidade in entidades
+					tr.w3-hover-blue
+						td= entidade.designacao
+						td= entidade.sigla
+						td= entidade.estado
+						td
+							a(href='/entidades/' + entidade.id) #{entidade.id}
